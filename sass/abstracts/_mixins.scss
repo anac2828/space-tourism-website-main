@@ -1,0 +1,18 @@
+@mixin fontsize($font-size, $line-height: 1.1) {
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+@mixin flex() {
+  display: flex;
+  gap: var(--gap);
+  @content;
+}
+
+@mixin heading($text-size, $line-height: 1.1) {
+  font-family: var(--font-family, --ff-serif);
+  font-size: $text-size;
+  text-transform: uppercase;
+  line-height: $line-height;
+  @content;
+}

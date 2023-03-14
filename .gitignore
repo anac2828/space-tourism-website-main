@@ -17,3 +17,5 @@
 node_modules
 preview.jpg
 starter-code
+.parcel-cache
+dist

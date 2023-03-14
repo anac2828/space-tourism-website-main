@@ -1,0 +1,46 @@
+
+section {
+  margin-bottom: 4rem;
+}
+
+.color{
+  --gap: .5rem;
+  width: 15rem;
+  color: hsl(var(--clr-white));
+
+  div{
+    padding: 3rem 1rem 1rem;
+    border: 1px solid hsl(var(--clr-white));
+    color: var(--text-color, hsl(var(--clr-white)));
+  }
+
+  &--accent{
+    --text-color: hsl(var(--clr-dark));
+    div{
+    background-color: hsl(var(--clr-light));
+    }
+  }
+
+  &--white{
+    --text-color: hsl(var(--clr-dark));
+    div{
+      background-color: hsl(var(--clr-white));
+    }
+  }
+}
+
+.heading-styles{
+  @include flex;
+
+  & > div{
+    flex-basis: 100%;
+  }
+
+  .heading{
+    margin-bottom: 1rem;
+  }
+
+  .heading p:first-child{
+    color: hsl(var(--clr-light));
+  }
+}
