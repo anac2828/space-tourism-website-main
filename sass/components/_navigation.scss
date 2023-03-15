@@ -1,0 +1,46 @@
+.primary-nav{
+
+  span{
+      --margin-size: .5rem;
+    }
+}
+
+.secondary-nav{
+  --text-color: hsl(var(--clr-light));
+  --padding-bottom: .5rem;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.nav:has(.secondary-nav){
+  --gap: 2rem;
+  @include flex;
+}
+
+.nav{
+
+  ul{
+    list-style: none;
+    @include flex;
+  }
+  
+  &__link{
+    --font-size: var(--fs-100);
+      @include navLinks;
+  }
+
+  &__item{
+    --border-color: hsl(var(--clr-white) / 0);
+    @include navItemsBottomBorder
+  }
+
+  &__item:hover, &__item:focus{
+    --border-color: hsl(var(--clr-white) / .5);
+  }
+
+  &__item.active, &__item[aria-selected="true"]{
+    --text-color: hsl(var(--clr-white));
+    --border-color: hsl(var(--clr-white) / 1);
+  }
+}

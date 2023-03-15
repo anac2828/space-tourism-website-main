@@ -19,7 +19,7 @@
     <h1 class="heading-primary">Design system</h1>
 
     <section id="colors">
-      <h2><span>01</span> colors</h2>
+      <h2 class="numbered-title"><span>01</span> colors</h2>
 
       <div class="wrapper flex">
         <div class="color">
@@ -47,7 +47,7 @@
     </section>
 <!-- TYPOGRAPHY -->
      <section id="typography">
-        <h2><span>02 </span>Typography</h2>
+        <h2 class="numbered-title"><span>02 </span>Typography</h2>
         <div class="heading-styles">
           <div class="headings">
               <div class="heading heading--1"> 
@@ -93,6 +93,51 @@
           </div>
         </div>
         </section>
+
+        <section id="interactive-elements">
+          <h2 class="numbered-title"><span>03</span> Interactive elements</h2>
+          
+          <!-- navigation -->
+          <div>
+              <nav class="nav">
+                <ul class="primary-nav">
+                    <li class="nav__item active">
+                      <a href="#" class="nav__link numbered-title">
+                        <span>01</span>Active
+                      </a>
+                    <li class="nav__item">
+                      <a class="numbered-title nav__link" href="#">
+                        <span>02</span>Hovered
+                      </a>
+                    <li class="nav__item">
+                      <a class="numbered-title nav__link" href="#"><span>03</span>Idle
+                      </a>
+                </ul>
+              </nav>
+          </div>
+          
+          <div class="flex">
+              <div>
+                  <!-- explore button -->
+                  <a href="#" class="btn btn--large">Explore</a>
+              </div>
+              
+              <div style="margin-bottom: 50vh">
+                  <!-- Tabs -->
+                  <div class="nav">
+                    <button aria-selected="true" class="nav__item nav__link secondary-nav">Moon</button>
+                    <button aria-selected="false" class="nav__item nav__link secondary-nav">Mars</button>
+                    <button aria-selected="false" class="nav__item nav__link secondary-nav">Europa</button>
+                  </div>
+                  <!-- Dots -->
+                  
+                  
+                  <!-- Numbers -->
+              </div>
+          </div>
+          
+      </section>
+            
 
   </div>
 </body>

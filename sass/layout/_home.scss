@@ -1,8 +1,7 @@
-
-section {
-  margin-bottom: 4rem;
+section{
+  --margin-size: 4rem;
+  @include margin;
 }
-
 .color{
   --gap: .5rem;
   width: 15rem;
@@ -12,6 +11,7 @@ section {
     padding: 3rem 1rem 1rem;
     border: 1px solid hsl(var(--clr-white));
     color: var(--text-color, hsl(var(--clr-white)));
+    margin-bottom: 1rem;
   }
 
   &--accent{
@@ -29,6 +29,16 @@ section {
   }
 }
 
+// where has no speficity
+.headings > *:where(:not(:first-child)){
+  @include margin;
+  --margin-size: 2rem;
+}
+
+.headings:nth-of-type(2){
+  --margin-size: 5rem;
+}
+
 .heading-styles{
   @include flex;
 
@@ -36,11 +46,14 @@ section {
     flex-basis: 100%;
   }
 
-  .heading{
-    margin-bottom: 1rem;
-  }
-
   .heading p:first-child{
     color: hsl(var(--clr-light));
+  }
+}
+
+#interactive-elements{
+  div{
+    --margin-size: 4rem;
+    @include margin
   }
 }
