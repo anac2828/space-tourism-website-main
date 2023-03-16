@@ -1,13 +1,13 @@
-@mixin margin(){
+@mixin margin() {
   margin-top: var(--margin-size, 1rem);
 }
 
-@mixin gridCenter(){
-  display: grid;
+@mixin gridCenter() {
+  display: inline-grid;
   place-content: center;
 }
 
-@mixin grid(){
+@mixin grid() {
   display: grid;
   justify-items: start;
   gap: 1rem;
@@ -18,7 +18,7 @@
   gap: var(--gap);
 }
 
-@mixin flexCenter(){
+@mixin flexCenter() {
   display: flex;
   align-items: var(--align-items, center);
   justify-content: var(--justify-content, center);

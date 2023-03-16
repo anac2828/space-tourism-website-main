@@ -1,17 +1,31 @@
-.flex{
+.flex {
   display: flex;
   gap: var(--gap);
 }
 
-.grid{
+.grid {
   display: grid;
   gap: var(--gap);
 }
 
-.wrapper{
+.wrapper {
   padding-inline: 2rem;
   margin-inline: auto;
   max-width: 60rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
+  gap: 4rem;
+
+  & > *:first-child {
+    grid-column: 2;
+  }
+
+  & > *:last-child {
+    grid-column: 3;
+  }
 }
 
 .sr-only {
@@ -27,25 +41,51 @@
 }
 
 // COLORS
-.bg-dark{ background-color: hsl($clr-dark)}
-.bg-accent{ background-color: hsl($clr-light)}
-.bg-white{ background-color: hsl($clr-white)}
+.bg-dark {
+  background-color: hsl($clr-dark);
+}
+.bg-accent {
+  background-color: hsl($clr-light);
+}
+.bg-white {
+  background-color: hsl($clr-white);
+}
 
-.text-dark{color: hsl($clr-dark)}
-.text-accent{color: hsl($clr-light)}
-.text-white{color: hsl($clr-white)}
+.text-dark {
+  color: hsl($clr-dark);
+}
+.text-accent {
+  color: hsl($clr-light);
+}
+.text-white {
+  color: hsl($clr-white);
+}
 
 /* typography */
 
-.ff-serif { font-family: var(--ff-serif); } 
-.ff-sans-cond { font-family: var(--ff-sans-cond); } 
-.ff-sans-normal { font-family: var(--ff-sans-normal); } 
+.ff-serif {
+  font-family: var(--ff-serif);
+}
+.ff-sans-cond {
+  font-family: var(--ff-sans-cond);
+}
+.ff-sans-normal {
+  font-family: var(--ff-sans-normal);
+}
 
-.letter-spacing-1 { letter-spacing: 4.75px; }
-.letter-spacing-2 { letter-spacing: 2.7px; }
-.letter-spacing-3 { letter-spacing: 2.35px; }
+.letter-spacing-1 {
+  letter-spacing: 4.75px;
+}
+.letter-spacing-2 {
+  letter-spacing: 2.7px;
+}
+.letter-spacing-3 {
+  letter-spacing: 2.35px;
+}
 
-.uppercase { text-transform: uppercase; }
+.uppercase {
+  text-transform: uppercase;
+}
 
 // .fs-900 { font-size: var(--fs-900); }
 // .fs-800 { font-size: var(--fs-800); }
@@ -56,10 +96,8 @@
 // .fs-300 { font-size: var(--fs-300); }
 // .fs-200 { font-size: var(--fs-200); }
 
-
 // .fs-900,
 // .fs-800,
 // .fs-700,
 // .fs-600 {
 //     line-height: 1.1;}
-
