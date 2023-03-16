@@ -1,46 +1,55 @@
+
 .primary-nav{
+--gap: 4rem;
 
-  span{
-      --margin-size: .5rem;
-    }
+  .nav__link{
+    font-size: var(--fs-400); 
+  }
 }
 
+
+// smaller bottom padding and accent color
 .secondary-nav{
-  --text-color: hsl(var(--clr-light));
-  --padding-bottom: .5rem;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-}
-
-.nav:has(.secondary-nav){
   --gap: 2rem;
-  @include flex;
+  cursor: pointer;
+  
+  .nav__item{
+    color: hsl(var(--clr-light));
+    padding-bottom: .5rem;
+    background-color: transparent;
+    border: 0;
+  }
 }
 
+// nav styles applicable to both primary and secondary navs
 .nav{
-
-  ul{
+  font-family: var(--ff-sans-cond);
+  font-size: var(--fs-300);
+  
+  &__list{
     list-style: none;
     @include flex;
   }
   
-  &__link{
-    --font-size: var(--fs-100);
-      @include navLinks;
-  }
-
   &__item{
-    --border-color: hsl(var(--clr-white) / 0);
-    @include navItemsBottomBorder
+    letter-spacing: 2.7px;
+    text-transform: uppercase;
+    padding-bottom: 2rem;
+    border-bottom: .2rem solid hsl(var(--clr-white) / var(--border-opacity, 0)) !important; 
   }
 
   &__item:hover, &__item:focus{
-    --border-color: hsl(var(--clr-white) / .5);
+    --border-opacity: .5;
   }
 
   &__item.active, &__item[aria-selected="true"]{
-    --text-color: hsl(var(--clr-white));
-    --border-color: hsl(var(--clr-white) / 1);
+    color: hsl(var(--clr-white));
+    --border-opacity: 1;
+  }
+
+  &__link{
+    text-decoration: none;
+    color: hsl(var(--clr-white));
+    transition: all .2s;
   }
 }

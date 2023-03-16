@@ -7,10 +7,15 @@
   place-content: center;
 }
 
+@mixin grid(){
+  display: grid;
+  justify-items: start;
+  gap: 1rem;
+}
+
 @mixin flex() {
   display: flex;
   gap: var(--gap);
-  @content;
 }
 
 @mixin flexCenter(){
@@ -22,27 +27,4 @@
 @mixin fontsize($font-size, $line-height: 1.1) {
   font-size: $font-size;
   line-height: $line-height;
-}
-
-@mixin heading($line-height: 1.1) {
-  font-family: var(--font-family, var(--ff-serif));
-  font-size: var(--font-size, var(--fs-100));
-  text-transform: uppercase;
-  line-height: $line-height;
-  @content;
-}
-
-@mixin navLinks(){
-  font-family: var(--ff-sans-cond);
-  text-decoration: none;
-  color: var(--text-color, hsl(var(--clr-white)));
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: all .2s;
-  @content;
-}
-
-@mixin navItemsBottomBorder {
-  padding-bottom: var(--padding-bottom, 1rem);
-  border-bottom: .2rem solid var(--border-color);
 }

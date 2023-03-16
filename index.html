@@ -16,12 +16,12 @@
 <body>
   
   <div class="wrapper" >
-    <h1 class="heading-primary">Design system</h1>
+    <h1>Design system</h1>
 
     <section id="colors">
       <h2 class="numbered-title"><span>01</span> colors</h2>
 
-      <div class="wrapper flex">
+      <div class="wrapper">
         <div class="color">
           <div>
             #0B0D17
@@ -49,58 +49,59 @@
      <section id="typography">
         <h2 class="numbered-title"><span>02 </span>Typography</h2>
         <div class="heading-styles">
+            <!-- Main headings -->
           <div class="headings">
-              <div class="heading heading--1"> 
+              <div> 
                   <p>Heading 1 - Bellefair Regular - 150px</p>
-                  <p class="primary-heading">Earth</p>
+                  <p class="heading heading--primary">Earth</p>
               </div>
-              <div class="heading heading--2"> 
+              <div> 
                   <p>Heading 2 - Bellefair Regular - 100px</p>
-                  <p class="secondary-heading">Venus</p>
+                  <p class="heading heading--secondary">Venus</p>
               </div>
-              <div class="heading heading--3"> 
+              <div> 
                   <p>Heading 3 - Bellefair Regular - 56px</p>
-                  <p class="tertiary-heading">Jupiter & Saturn</p>
+                  <p class="heading heading--tertiary">Jupiter & Saturn</p>
               </div>
-              <div class="heading heading--4"> 
+              <div> 
                   <p>Heading 4 - Bellefair Regular - 32px</p>
-                  <p class="quaternary-heading">Uranus, Neptune, & Pluto</p>
+                  <p class="heading heading--quaternary">Uranus, Neptune, & Pluto</p>
               </div>
-              <div class="heading heading--5"> 
+              <div> 
                   <p>Heading 5 - Barlow Condensed Regular - 28px - 4.75 Character Space</p>
-                  <p class="quinary-heading">So, you want to travel to space</p>
+                  <p class="heading heading--quinary">So, you want to travel to space</p>
               </div>
           
           </div>
-          
+            <!-- Subheads, nav, and body text -->
           <div class="headings">
-              <div class="heading"> 
+              <div> 
                   <p>Subheading 1 - Bellefair Regular - 28px</p>
-                  <p class="subheading-primary">384,400 km</p>
+                  <p class="heading heading--primary-subhead">384,400 km</p>
               </div>
-              <div class="heading"> 
+              <div> 
                   <p>Subheading 2 - Barlow Condensed Regular - 14px - 2.35 Character Space</p>
-                  <p class="subheading-secondary">Avg. Distance</p>
+                  <p class="heading heading--secondary-subhead">Avg. Distance</p>
               </div>
-              <div class="heading"> 
+              <div> 
                   <p>Nav Text - Barlow Condensed Regular - 16px - 2.7 Character Space</p>
                   <p class="nav">Europa</p>
               </div>
-              <div class="heading"> 
+              <div> 
                   <p>Body Text</p>
                   <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. </p>
               </div>
           </div>
         </div>
         </section>
-
+    
         <section id="interactive-elements">
           <h2 class="numbered-title"><span>03</span> Interactive elements</h2>
           
           <!-- navigation -->
           <div>
               <nav class="nav">
-                <ul class="primary-nav">
+                <ul class="nav__list primary-nav">
                     <li class="nav__item active">
                       <a href="#" class="nav__link numbered-title">
                         <span>01</span>Active
@@ -115,7 +116,7 @@
                 </ul>
               </nav>
           </div>
-          
+          <!-- buttons -->
           <div class="flex">
               <div>
                   <!-- explore button -->
@@ -124,15 +125,24 @@
               
               <div style="margin-bottom: 50vh">
                   <!-- Tabs -->
-                  <div class="nav">
-                    <button aria-selected="true" class="nav__item nav__link secondary-nav">Moon</button>
-                    <button aria-selected="false" class="nav__item nav__link secondary-nav">Mars</button>
-                    <button aria-selected="false" class="nav__item nav__link secondary-nav">Europa</button>
+                  <div class="nav nav__list secondary-nav">
+                    <button aria-selected="true" class="nav__item">Moon</button>
+                    <button aria-selected="false" class="nav__item">Mars</button>
+                    <button aria-selected="false" class="nav__item">Europa</button>
                   </div>
                   <!-- Dots -->
-                  
+                  <div class="dot-indicators nav-btns">
+                      <button class="btn btn--dot" aria-selected="true"><span class="sr-only">Slide title</span></button>
+                      <button class="btn btn--dot" aria-selected="false"><span class="sr-only">Slide title</span></button>
+                      <button class="btn btn--dot" aria-selected="false"><span class="sr-only">Slide title</span></button>
+                  </div>
                   
                   <!-- Numbers -->
+                    <div class="number-indicators nav-btns">
+                      <button class="btn btn--small" aria-selected="true">1</button>
+                      <button class="btn btn--small" aria-selected="false">2</button>
+                      <button class="btn btn--small" aria-selected="false">3</button>
+                    </div>
               </div>
           </div>
           

@@ -2,40 +2,53 @@ h1{
   text-transform: uppercase;
 }
 
-.primary-heading{
-  --font-size: var(--fs-900);
-  @include heading;
+.heading{
+  font-family: var(--ff-serif);
+  text-transform: uppercase;
+  line-height: 1.1;
+
+  &--primary{
+    font-size: var(--fs-900);
+
+    &-subhead{
+      font-size: var(--fs-500);
+    }
+  }
+
+  &--secondary{
+    font-size: var(--fs-800);
+
+    &-subhead{
+      font-size: var(--fs-200);
+      font-family: var(--ff-sans-cond);
+      letter-spacing: 2.35px;
+    }
+  }
+
+  &--tertiary{
+    font-size: var(--fs-700);
+  }
+  &--quaternary{
+    font-size: var(--fs-600);
+  }
+  &--quinary{
+    font-size: var(--fs-500);
+    color: hsl(var(--clr-light));
+    font-family: var(--ff-sans-cond);
+    letter-spacing: 4.75px;
+  }
 }
 
-.secondary-heading{
-  --font-size: var(--fs-800);
-  @include heading;
-}
-
-.tertiary-heading{
-  --font-size: var(--fs-700);
-  @include heading
-}
-
-.quaternary-heading{
-  --font-size: var(--fs-600);
-  @include heading
-}
-
-.quinary-heading{
-  --font-size: var(--fs-500);
-  color: hsl(var(--clr-light));
-  --font-family: var(--ff-sans-cond);
-  @include heading;
-}
-
-.subheading-primary{
-  --font-size: var(--fs-400);
-  @include heading;
-}
-
-.subheading-secondary{
-  --font-size: var(--fs-200);
-  --font-family: var(--ff-sans-cond);
-  @include heading;
+.numbered-title{
+  font-family: var(--ff-sans-cond);
+  font-size: var(--fs-500);
+  letter-spacing: 4.72px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  
+  span{
+    color: hsl(var(--clr-white) / .25);
+    margin-right: .5rem;
+    font-weight: 700;
+  }
 }
