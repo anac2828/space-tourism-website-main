@@ -197,6 +197,7 @@ h1 {
   aspect-ratio: 1;
   background: hsl(var(--clr-white) / var(--background-opacity, 1));
   color: hsl(var(--clr-dark));
+  text-transform: uppercase;
   border: 0;
   border-radius: 50%;
   place-content: center;

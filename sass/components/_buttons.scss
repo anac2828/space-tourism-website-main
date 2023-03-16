@@ -1,9 +1,9 @@
-.btn{
+.btn {
   cursor: pointer;
 
   // center text in button
   @include gridCenter;
-  // 
+  //
   // makes the button a circle
   border-radius: 50%;
   aspect-ratio: 1;
@@ -11,40 +11,43 @@
   border: 0;
   background: hsl(var(--clr-white) / var(--background-opacity, 1));
   color: hsl(var(--clr-dark));
-  
+  text-transform: uppercase;
+
   // DOTS
-  &--dot{
-    --background-opacity: .2;
-    padding: .5rem;
-    
-    &:hover{
-      --background-opacity: .5;
+  &--dot {
+    --background-opacity: 0.2;
+    padding: 0.5rem;
+
+    &:hover {
+      --background-opacity: 0.5;
     }
 
-    &.active, &[aria-selected='true']{
+    &.active,
+    &[aria-selected='true'] {
       --background-opacity: 1;
     }
   }
 
   // SMALL BUTTON
-  &--small{
+  &--small {
     padding: 0 1.25rem;
-    border: 1px solid hsl(var(--clr-white) / var(--border-opacity, .15));
+    border: 1px solid hsl(var(--clr-white) / var(--border-opacity, 0.15));
     background-color: transparent;
     color: hsl(var(--clr-white));
 
-    &:hover, &:focus{
+    &:hover,
+    &:focus {
       --border-opacity: 1;
     }
 
-    &[aria-selected='true']{
+    &[aria-selected='true'] {
       background-color: hsl(var(--clr-white));
       color: hsl(var(--clr-dark));
     }
   }
 
   // LARGE BUTTON
-  &--large{
+  &--large {
     padding: 0 2rem;
     z-index: 1;
     position: relative;
@@ -53,24 +56,23 @@
     letter-spacing: 1px;
 
     // HOVER ANIMATION
-      &::after{
+    &::after {
       position: absolute;
       content: '';
       display: block;
       width: 100%;
       height: 100%;
       border-radius: inherit;
-      background-color: var(--bg-color, hsl(var(--clr-white) / .15));
+      background-color: var(--bg-color, hsl(var(--clr-white) / 0.15));
       z-index: -1;
       opacity: 0;
-      transition: opacity .5s linear, scale .75s ease-in-out;
+      transition: opacity 0.5s linear, scale 0.75s ease-in-out;
     }
 
-    &:hover::after{
+    &:hover::after {
       opacity: 1;
       scale: 1.5;
       padding: 0 2rem;
     }
   }
 }
-
