@@ -1,3 +1,7 @@
+.d-block{
+  display: block;
+}
+
 .flex {
   display: flex;
   gap: var(--gap);
@@ -16,15 +20,28 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
-  gap: 4rem;
+  gap: 2rem;
+  place-items: center;
+  text-align: center;
+  padding-inline: 1rem;
+  
 
-  & > *:first-child {
-    grid-column: 2;
-  }
+  @include mediaDesktop{
+    text-align: left;
+    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
 
-  & > *:last-child {
-    grid-column: 3;
+    & > *:first-child {
+      grid-column: 2;
+    }
+
+    & > *:last-child {
+      grid-column: 3;
+    }
+
+    &--home{
+      align-self: end;
+      padding-bottom: max(6rem, 20vh); /* will help with big screens to prevent text to go to far to the bottom*/
+    }
   }
 }
 

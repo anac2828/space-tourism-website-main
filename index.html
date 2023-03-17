@@ -17,15 +17,18 @@
 
     <title>Frontend Mentor | Space tourism website</title>
   </head>
-  <body>
+  <body class="home">
     <header class="header-primary flex">
+      
       <!-- LOGO -->
       <div>
         <img class="logo" src="assets/shared/logo.svg" alt="space tourism logo" />
       </div>
+      
       <!-- NAVIGATION -->
+      <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="true"><span class="sr-only">Menu</span></button>
       <nav class="nav">
-        <ul class="nav__list primary-nav">
+        <ul id="primary-navigation" class="nav__list primary-nav">
           <li class="nav__item active">
             <a href="" class="nav__link numbered-title"> <span>00</span>Home</a>
           </li>
@@ -45,11 +48,11 @@
       </nav>
     </header>
 
-    <main>
-      <div class="grid-container">
+  
+      <main class="grid-container grid-container--home">
         <div>
           <h1 class="heading heading--quinary">
-            So, you want to travel to <span class="heading heading--primary">Space</span>
+            So, you want to travel to <span class="heading heading--primary d-block">Space</span>
           </h1>
           <p>
             Let’s face it; if you want to go to space, you might as well genuinely go to
@@ -61,7 +64,7 @@
         <div>
           <a class="btn btn--large">Explore</a>
         </div>
-      </div>
-    </main>
+      </main>
+    
   </body>
 </html>

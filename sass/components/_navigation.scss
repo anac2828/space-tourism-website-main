@@ -1,6 +1,5 @@
 
 .primary-nav{
---gap: 4rem;
 
   .nav__link{
     font-size: var(--fs-400); 
@@ -23,19 +22,22 @@
 
 // nav styles applicable to both primary and secondary navs
 .nav{
+
   font-family: var(--ff-sans-cond);
   font-size: var(--fs-300);
-  
+
   &__list{
     list-style: none;
-    @include flex;
+    display: flex;
+    gap: var(--nav-gap, 4rem);
+    margin: 0;
   }
-  
+
   &__item{
     letter-spacing: 2.7px;
     text-transform: uppercase;
-    padding-bottom: 2rem;
-    border-bottom: .2rem solid hsl(var(--clr-white) / var(--border-opacity, 0)) !important; 
+    padding-bottom: var(--nav-item-padding, 2rem);
+    border-bottom: var(--nav-item-border, .2rem solid hsl(var(--clr-white) / var(--border-opacity, 0))); 
   }
 
   &__item:hover, &__item:focus{
@@ -51,5 +53,43 @@
     text-decoration: none;
     color: hsl(var(--clr-white));
     transition: all .2s;
+    --span-color: hsl(var(--clr-white));
+  }
+
+  // MOBILE NAV STYLES
+  @media (max-width: 35rem){
+    --nav-gap: 2.5rem;
+    --nav-item-padding: 0;
+    --nav-item-border: none;
+    position: absolute;
+    inset: 0 0 0 30%;
+    backdrop-filter: blur(20px);
+    background-color: hsl(var(--clr-white) / .1);
+    // will chose the smaller of the two
+    padding: min(6rem, 15vh) 2rem;
+
+    &__list{
+      flex-direction: column;
+    }
+  }
+}
+
+.mobile-nav-toggle{
+  background: none;
+  border: none;
+  width: 1.75rem;
+  cursor: pointer;
+  height: 1.75rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  
+  &[aria-expanded="false"]{
+  background-image: url('../assets/shared/icon-hamburger.svg');
+  display: none;
+  }
+
+  &[aria-expanded="true"]{
+    background-image: url('../assets/shared/icon-close.svg');
+    z-index: 3;
   }
 }

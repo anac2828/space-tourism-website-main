@@ -1,0 +1,74 @@
+section{
+  margin-top: 4rem;
+  // @include margin;
+}
+
+#colors{
+  .wrapper{
+   @include flex;
+ }
+
+ .color{
+  flex-basis: 100%;
+  color: hsl(var(--clr-white));
+
+    div{
+      padding: 3rem 1rem 1rem;
+      border: 1px solid hsl(var(--clr-white));
+      color: var(--text-color, hsl(var(--clr-white)));
+      margin-bottom: 1rem;
+    }
+
+    &--accent{
+      --text-color: hsl(var(--clr-dark));
+      
+      div{
+        background-color: hsl(var(--clr-light));
+      }
+    }
+
+    &--white{
+      --text-color: hsl(var(--clr-dark));
+        div{
+          background-color: hsl(var(--clr-white));
+        }
+    }
+  }
+}
+
+// TYPOGRAPHY SECTION
+
+.heading-styles{
+  @include flex;
+
+  .headings{
+    flex-basis: 100%;
+  }
+
+    // where has no speficity
+  .headings > *:where(:not(:first-child)){
+    margin-top: 2rem;
+  }
+  
+  .headings div p:first-child{
+    color: hsl(var(--clr-light));
+  }
+}
+
+#interactive-elements{
+  --gap: 8rem;
+  
+  div{
+    margin-top: 4rem;
+  }
+}
+
+.dot-indicators{
+  @include flex;
+  gap: 1rem;
+}
+
+.number-indicators{
+  @include grid;
+}
+

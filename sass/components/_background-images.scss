@@ -1,0 +1,14 @@
+.home{
+  background-image: url('../assets/home/background-home-mobile.jpg');
+  // background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+
+  @include mediaTablet{
+    background-image: url('../assets/home/background-home-tablet.jpg');
+  }
+  
+  @include mediaDesktop{
+    background-image: url('../assets/home/background-home-desktop.jpg');
+  }
+}

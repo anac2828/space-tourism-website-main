@@ -12,6 +12,7 @@
   background: hsl(var(--clr-white) / var(--background-opacity, 1));
   color: hsl(var(--clr-dark));
   text-transform: uppercase;
+  font-family: (var(--ff-serif));
 
   // DOTS
   &--dot {
@@ -51,7 +52,7 @@
     padding: 0 2rem;
     z-index: 1;
     position: relative;
-    font-size: var(--fs-500);
+    font-size: 2rem;
     text-decoration: none;
     letter-spacing: 1px;
 
