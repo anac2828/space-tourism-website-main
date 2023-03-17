@@ -1,80 +1,82 @@
-
-.primary-nav{
-
-  .nav__link{
-    font-size: var(--fs-400); 
+.primary-nav {
+  .nav__link {
+    font-size: var(--fs-400);
   }
 }
 
-
 // smaller bottom padding and accent color
-.secondary-nav{
+.secondary-nav {
   --gap: 2rem;
   cursor: pointer;
-  
-  .nav__item{
+
+  .nav__item {
     color: hsl(var(--clr-light));
-    padding-bottom: .5rem;
+    padding-bottom: 0.5rem;
     background-color: transparent;
     border: 0;
   }
 }
 
 // nav styles applicable to both primary and secondary navs
-.nav{
-
+.nav {
   font-family: var(--ff-sans-cond);
   font-size: var(--fs-300);
+  backdrop-filter: blur(20px);
+  background-color: hsl(var(--clr-white) / 0.1);
 
-  &__list{
+  &__list {
     list-style: none;
     display: flex;
     gap: var(--nav-gap, 4rem);
     margin: 0;
   }
 
-  &__item{
+  &__item {
     letter-spacing: 2.7px;
     text-transform: uppercase;
     padding-bottom: var(--nav-item-padding, 2rem);
-    border-bottom: var(--nav-item-border, .2rem solid hsl(var(--clr-white) / var(--border-opacity, 0))); 
+    border-bottom: var(
+      --nav-item-border,
+      0.2rem solid hsl(var(--clr-white) / var(--border-opacity, 0))
+    );
   }
 
-  &__item:hover, &__item:focus{
-    --border-opacity: .5;
+  &__item:hover,
+  &__item:focus {
+    --border-opacity: 0.5;
   }
 
-  &__item.active, &__item[aria-selected="true"]{
+  &__item.active,
+  &__item[aria-selected='true'] {
     color: hsl(var(--clr-white));
     --border-opacity: 1;
   }
 
-  &__link{
+  &__link {
     text-decoration: none;
     color: hsl(var(--clr-white));
-    transition: all .2s;
+    transition: all 0.2s;
     --span-color: hsl(var(--clr-white));
   }
 
   // MOBILE NAV STYLES
-  @media (max-width: 35rem){
+  @media (max-width: 35rem) {
     --nav-gap: 2.5rem;
     --nav-item-padding: 0;
     --nav-item-border: none;
     position: absolute;
     inset: 0 0 0 30%;
-    backdrop-filter: blur(20px);
-    background-color: hsl(var(--clr-white) / .1);
     // will chose the smaller of the two
     padding: min(6rem, 15vh) 2rem;
+    display: none;
 
-    &__list{
+    &__list {
       flex-direction: column;
     }
   }
 }
 
-.mobile-nav-toggle{
+.mobile-nav-toggle {
   background: none;
   border: none;
   width: 1.75rem;
@@ -82,13 +84,13 @@
   height: 1.75rem;
   background-size: contain;
   background-repeat: no-repeat;
-  
-  &[aria-expanded="false"]{
-  background-image: url('../assets/shared/icon-hamburger.svg');
-  display: none;
+
+  &[aria-expanded='false'] {
+    background-image: url('../assets/shared/icon-hamburger.svg');
+    display: block;
   }
 
-  &[aria-expanded="true"]{
+  &[aria-expanded='true'] {
     background-image: url('../assets/shared/icon-close.svg');
     z-index: 3;
   }

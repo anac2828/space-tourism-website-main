@@ -356,6 +356,9 @@ h1 {
 .nav {
   font-family: var(--ff-sans-cond);
   font-size: var(--fs-300);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background-color: hsl(var(--clr-white) / .1);
 }
 
 .nav__list {
@@ -393,10 +396,8 @@ h1 {
     --nav-gap: 2.5rem;
     --nav-item-padding: 0;
     --nav-item-border: none;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-    background-color: hsl(var(--clr-white) / .1);
     padding: min(6rem, 15vh) 2rem;
+    display: none;
     position: absolute;
     inset: 0 0 0 30%;
   }
@@ -416,7 +417,7 @@ h1 {
 
 .mobile-nav-toggle[aria-expanded="false"] {
   background-image: url("icon-hamburger.f399ef6d.svg");
-  display: none;
+  display: block;
 }
 
 .mobile-nav-toggle[aria-expanded="true"] {
