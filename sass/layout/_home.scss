@@ -1,6 +1,17 @@
 .header-primary{
   justify-content: space-between;
+  // padding: 2rem 0 0 clamp(2rem, 5vw, 3.5rem);
   padding: 2rem;
   align-items: center;
   z-index: 2;
+
+  & > :first-child{
+    flex-basis: 100%;
+  }
+
+    // TABLET NAV STYLES
+  // 560px and 720px
+@include mediaTablet{
+    padding: 0 0 0 2rem
+  }
 }

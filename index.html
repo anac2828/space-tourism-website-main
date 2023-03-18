@@ -14,21 +14,27 @@
     />
     <!-- my styles -->
     <link rel="stylesheet" href="sass/main.scss" />
+    <script src="js/main.js" defer></script>
 
     <title>Frontend Mentor | Space tourism website</title>
   </head>
   <body class="home">
     <header class="header-primary flex">
-      
       <!-- LOGO -->
       <div>
         <img class="logo" src="assets/shared/logo.svg" alt="space tourism logo" />
       </div>
-      
+
       <!-- NAVIGATION -->
-      <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="true"><span class="sr-only">Menu</span></button>
-      <nav class="nav">
-        <ul id="primary-navigation" class="nav__list primary-nav">
+      <button
+        class="mobile-nav-toggle"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Menu</span>
+      </button>
+      <nav id="primary-navigation" class="nav" data-visible="false">
+        <ul class="nav__list primary-nav">
           <li class="nav__item active">
             <a href="" class="nav__link numbered-title"> <span>00</span>Home</a>
           </li>
@@ -48,23 +54,22 @@
       </nav>
     </header>
 
-  
-      <main class="grid-container grid-container--home">
-        <div>
-          <h1 class="heading heading--quinary">
-            So, you want to travel to <span class="heading heading--primary d-block">Space</span>
-          </h1>
-          <p>
-            Let’s face it; if you want to go to space, you might as well genuinely go to
-            outer space and not hover kind of on the edge of it. Well sit back, and relax
-            because we’ll give you a truly out of this world experience!
-          </p>
-        </div>
+    <main class="grid-container grid-container--home">
+      <div>
+        <h1 class="heading heading--quinary">
+          So, you want to travel to
+          <span class="heading heading--primary d-block">Space</span>
+        </h1>
+        <p>
+          Let’s face it; if you want to go to space, you might as well genuinely go to
+          outer space and not hover kind of on the edge of it. Well sit back, and relax
+          because we’ll give you a truly out of this world experience!
+        </p>
+      </div>
 
-        <div>
-          <a class="btn btn--large">Explore</a>
-        </div>
-      </main>
-    
+      <div>
+        <a class="btn btn--large">Explore</a>
+      </div>
+    </main>
   </body>
 </html>

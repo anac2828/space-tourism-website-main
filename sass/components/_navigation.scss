@@ -1,95 +1,129 @@
-
-.primary-nav{
-
-  .nav__link{
-    font-size: var(--fs-400); 
-  }
+.primary-nav {
+    --font-size: var(--fs-400);
 }
 
-
 // smaller bottom padding and accent color
-.secondary-nav{
-  --gap: 2rem;
+.secondary-nav {
+  --nav-gap: 2rem;
   cursor: pointer;
-  
-  .nav__item{
+  --nav-item-padding: .5rem;
+
+  .nav__item {
     color: hsl(var(--clr-light));
-    padding-bottom: .5rem;
     background-color: transparent;
     border: 0;
   }
 }
 
 // nav styles applicable to both primary and secondary navs
-.nav{
-
+.nav {
   font-family: var(--ff-sans-cond);
-  font-size: var(--fs-300);
+  backdrop-filter: blur(20px);
+  background-color: hsl(var(--clr-white) / 0.1);
 
-  &__list{
+  &__list {
     list-style: none;
     display: flex;
     gap: var(--nav-gap, 4rem);
     margin: 0;
   }
 
-  &__item{
+  &__item {
     letter-spacing: 2.7px;
     text-transform: uppercase;
     padding-bottom: var(--nav-item-padding, 2rem);
-    border-bottom: var(--nav-item-border, .2rem solid hsl(var(--clr-white) / var(--border-opacity, 0))); 
+    border-bottom: var(
+      --nav-item-border,
+      0.2rem solid hsl(var(--clr-white) / var(--border-opacity, 0))
+    );
   }
 
-  &__item:hover, &__item:focus{
-    --border-opacity: .5;
+  &__item:hover,
+  &__item:focus {
+    --border-opacity: 0.5;
   }
 
-  &__item.active, &__item[aria-selected="true"]{
-    color: hsl(var(--clr-white));
+  &__item.active,
+  &__item[aria-selected='true'] {
     --border-opacity: 1;
   }
 
-  &__link{
+  &__link {
     text-decoration: none;
     color: hsl(var(--clr-white));
-    transition: all .2s;
+    transition: all 0.2s;
     --span-color: hsl(var(--clr-white));
   }
 
+  // TABLET NAV STYLES
+  // 608px and 900px
+@include mediaTablet{
+  --nav-gap: clamp(2rem, 5vw, 4rem);
+    padding: 2rem 2rem 0;
+  // hides numbers
+  &__link span{
+    display: none;
+  }
+}
+
+
   // MOBILE NAV STYLES
-  @media (max-width: 35rem){
+  // 608px
+  @media (max-width: 38em) {
     --nav-gap: 2.5rem;
     --nav-item-padding: 0;
-    --nav-item-border: none;
+    --nav-item-border: 0;
     position: absolute;
     inset: 0 0 0 30%;
-    backdrop-filter: blur(20px);
-    background-color: hsl(var(--clr-white) / .1);
+    translate: 100%;
+    transition: translate .2s ease-in;
+    
     // will chose the smaller of the two
-    padding: min(6rem, 15vh) 2rem;
-
-    &__list{
+    padding: min(8rem, 20vh) 4rem;
+  
+    &__list {
       flex-direction: column;
+    }
+    
+    &__item:hover,
+    &__item:focus {
+      padding-right: 1rem;
+      border-right: 0.2rem solid hsl(var(--clr-white) / .5);
+    }
+
+    &__item.active, &__item[aria-selected='true']{
+      border-right: 0.2rem solid hsl(var(--clr-white) / 1);
+    }
+
+
+    &[data-visible="true"]{
+      translate: 0;
     }
   }
 }
 
-.mobile-nav-toggle{
-  background: none;
-  border: none;
-  width: 1.75rem;
+.mobile-nav-toggle {
+  z-index: 3;
   cursor: pointer;
-  height: 1.75rem;
-  background-size: contain;
-  background-repeat: no-repeat;
-  
-  &[aria-expanded="false"]{
+  width: 1.50rem;
+  aspect-ratio: 1;
+  border: none;
+  background: none;
   background-image: url('../assets/shared/icon-hamburger.svg');
+  background-repeat: no-repeat;
+  background-position: center;
   display: none;
+
+  &[aria-expanded='true'] {
+    background-image: url('../assets/shared/icon-close.svg');
   }
 
-  &[aria-expanded="true"]{
-    background-image: url('../assets/shared/icon-close.svg');
-    z-index: 3;
+  &:focus-visible{
+    outline: 5px solid white;
+    outline-offset: 5px;
+  }
+
+  @media (max-width: 38em){
+    display: block;
   }
 }

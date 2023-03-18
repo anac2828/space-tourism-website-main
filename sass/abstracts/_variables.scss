@@ -26,7 +26,7 @@ $clr-white: 0 0% 100%;
 }
 
 // 560px
-@media (min-width: 35em) {
+@media (min-width: 38em) {
     :root {
         --fs-800: 5rem;
         --fs-700: 2.5rem;
@@ -36,7 +36,7 @@ $clr-white: 0 0% 100%;
 }
 
 // 720px
-@media (min-width: 45em) {
+@media (min-width: 56.25em) {
     :root {
         /* font-sizes */
         --fs-800: 6.25rem;

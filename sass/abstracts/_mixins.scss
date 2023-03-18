@@ -22,16 +22,24 @@
   justify-content: var(--justify-content, center);
 }
 
+
+@mixin mediaMobile {
+    @media(min-width: 38em){
+      @content;
+  }
+}
+
 // QUERY
-// 600px
+// 608px and 900px
 @mixin mediaTablet{
-    @media(min-width: 37.5em){
+  @media(min-width: 38em) and (max-width: 56.25em){
     @content;
   }
 }
-// 720px
+
+// 900px
 @mixin mediaDesktop {
-    @media(min-width: 45em){
+    @media(min-width: 50em){
     @content;
   }
 }

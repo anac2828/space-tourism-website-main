@@ -16,7 +16,7 @@
   --ff-sans-normal: "Barlow", sans-serif;
 }
 
-@media (min-width: 35em) {
+@media (min-width: 38em) {
   :root {
     --fs-800: 5rem;
     --fs-700: 2.5rem;
@@ -25,7 +25,7 @@
   }
 }
 
-@media (min-width: 45em) {
+@media (min-width: 56.25em) {
   :root {
     --fs-800: 6.25rem;
     --fs-700: 3.5rem;
@@ -42,8 +42,9 @@
   box-sizing: border-box;
 }
 
-body, h1, h2, h3, h4, h5, p, figure, picture {
+body, h1, h2, h3, h4, h5, p, ul, figure, picture {
   margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -59,6 +60,7 @@ body {
   grid-template-rows: min-content 1fr;
   line-height: 1.5;
   display: grid;
+  overflow-x: hidden;
 }
 
 img, picutre {
@@ -92,6 +94,7 @@ h1 {
 
 .heading--primary {
   font-size: var(--fs-900);
+  line-height: 1.5;
 }
 
 .heading--primary-subhead {
@@ -125,7 +128,7 @@ h1 {
 
 .numbered-title {
   font-family: var(--ff-sans-cond);
-  font-size: var(--fs-500);
+  font-size: var(--font-size, var(--fs-500));
   letter-spacing: 4.72px;
   text-transform: uppercase;
   margin-bottom: 1rem;
@@ -165,7 +168,7 @@ h1 {
   display: grid;
 }
 
-@media (min-width: 45em) {
+@media (min-width: 50em) {
   .grid-container {
     text-align: left;
     grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
@@ -255,13 +258,13 @@ h1 {
   background-size: cover;
 }
 
-@media (min-width: 37.5em) {
+@media (min-width: 38em) and (max-width: 56.25em) {
   .home {
     background-image: url("background-home-tablet.4a6e1410.jpg");
   }
 }
 
-@media (min-width: 45em) {
+@media (min-width: 50em) {
   .home {
     background-image: url("background-home-desktop.79442218.jpg");
   }
@@ -337,25 +340,27 @@ h1 {
   scale: 1.5;
 }
 
-.primary-nav .nav__link {
-  font-size: var(--fs-400);
+.primary-nav {
+  --font-size: var(--fs-400);
 }
 
 .secondary-nav {
-  --gap: 2rem;
+  --nav-gap: 2rem;
   cursor: pointer;
+  --nav-item-padding: .5rem;
 }
 
 .secondary-nav .nav__item {
   color: hsl(var(--clr-light));
   background-color: #0000;
   border: 0;
-  padding-bottom: .5rem;
 }
 
 .nav {
   font-family: var(--ff-sans-cond);
-  font-size: var(--fs-300);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background-color: hsl(var(--clr-white) / .1);
 }
 
 .nav__list {
@@ -377,7 +382,6 @@ h1 {
 }
 
 .nav__item.active, .nav__item[aria-selected="true"] {
-  color: hsl(var(--clr-white));
   --border-opacity: 1;
 }
 
@@ -388,40 +392,70 @@ h1 {
   transition: all .2s;
 }
 
-@media (max-width: 35rem) {
+@media (min-width: 38em) and (max-width: 56.25em) {
+  .nav {
+    --nav-gap: clamp(2rem, 5vw, 4rem);
+    padding: 2rem 2rem 0;
+  }
+
+  .nav__link span {
+    display: none;
+  }
+}
+
+@media (max-width: 38em) {
   .nav {
     --nav-gap: 2.5rem;
     --nav-item-padding: 0;
-    --nav-item-border: none;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-    background-color: hsl(var(--clr-white) / .1);
-    padding: min(6rem, 15vh) 2rem;
+    --nav-item-border: 0;
+    padding: min(8rem, 20vh) 4rem;
+    transition: translate .2s ease-in;
     position: absolute;
     inset: 0 0 0 30%;
+    translate: 100%;
   }
 
   .nav__list {
     flex-direction: column;
   }
+
+  .nav__item:hover, .nav__item:focus {
+    border-right: .2rem solid hsl(var(--clr-white) / .5);
+    padding-right: 1rem;
+  }
+
+  .nav__item.active, .nav__item[aria-selected="true"] {
+    border-right: .2rem solid hsl(var(--clr-white) / 1);
+  }
+
+  .nav[data-visible="true"] {
+    translate: 0;
+  }
 }
 
 .mobile-nav-toggle {
-  width: 1.75rem;
+  z-index: 3;
   cursor: pointer;
-  height: 1.75rem;
-  background: 0 0 / contain no-repeat;
+  width: 1.5rem;
+  aspect-ratio: 1;
+  background: url("icon-hamburger.f399ef6d.svg") center no-repeat;
   border: none;
-}
-
-.mobile-nav-toggle[aria-expanded="false"] {
-  background-image: url("icon-hamburger.f399ef6d.svg");
   display: none;
 }
 
 .mobile-nav-toggle[aria-expanded="true"] {
-  z-index: 3;
   background-image: url("icon-close.1c947503.svg");
+}
+
+.mobile-nav-toggle:focus-visible {
+  outline-offset: 5px;
+  outline: 5px solid #fff;
+}
+
+@media (max-width: 38em) {
+  .mobile-nav-toggle {
+    display: block;
+  }
 }
 
 .header-primary {
@@ -429,6 +463,16 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
+}
+
+.header-primary > :first-child {
+  flex-basis: 100%;
+}
+
+@media (min-width: 38em) and (max-width: 56.25em) {
+  .header-primary {
+    padding: 0 0 0 2rem;
+  }
 }
 
 /*# sourceMappingURL=index.8d8029cf.css.map */
