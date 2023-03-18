@@ -24,7 +24,7 @@
   &__list {
     list-style: none;
     display: flex;
-    gap: var(--nav-gap, 4rem);
+    gap: var(--nav-gap, 3rem);
     margin: 0;
   }
 
@@ -55,16 +55,32 @@
     --span-color: hsl(var(--clr-white));
   }
 
+  // 900px and above
+  @include mediaDesktop {
+      position: relative;
+      padding-top: 2rem;
+      padding-inline: clamp(1rem, 4vw, 6rem);
+
+      // &::before{
+      //   content: '';
+      //   position: absolute;
+      //   height: 2px;
+      //   width: clamp(50rem, 40vw, 75rem);
+      //   background-color: red;
+      //   translate: -100% 1rem;
+      // }
+  }
+
   // TABLET NAV STYLES
   // 608px and 900px
-@include mediaTablet{
-  --nav-gap: clamp(2rem, 5vw, 4rem);
-    padding: 2rem 2rem 0;
-  // hides numbers
-  &__link span{
-    display: none;
+  @include mediaTablet{
+    --nav-gap: clamp(2rem, 5vw, 4rem);
+      padding: 2rem 2rem 0;
+    // hides numbers
+    &__link span{
+      display: none;
+    }
   }
-}
 
 
   // MOBILE NAV STYLES

@@ -39,7 +39,7 @@
 
 // 900px
 @mixin mediaDesktop {
-    @media(min-width: 50em){
+    @media(min-width: 56.25em){
     @content;
   }
 }

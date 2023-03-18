@@ -170,7 +170,7 @@ h1 {
   display: grid;
 }
 
-@media (min-width: 50em) {
+@media (min-width: 56.25em) {
   .grid-container {
     text-align: left;
     grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
@@ -266,7 +266,7 @@ h1 {
   }
 }
 
-@media (min-width: 50em) {
+@media (min-width: 56.25em) {
   .home {
     background-image: url("background-home-desktop.79442218.jpg");
   }
@@ -366,7 +366,7 @@ h1 {
 }
 
 .nav__list {
-  gap: var(--nav-gap, 4rem);
+  gap: var(--nav-gap, 3rem);
   margin: 0;
   list-style: none;
   display: flex;
@@ -392,6 +392,14 @@ h1 {
   --span-color: hsl(var(--clr-white));
   text-decoration: none;
   transition: all .2s;
+}
+
+@media (min-width: 56.25em) {
+  .nav {
+    padding-top: 2rem;
+    padding-inline: clamp(1rem, 4vw, 6rem);
+    position: relative;
+  }
 }
 
 @media (min-width: 38em) and (max-width: 56.25em) {
@@ -464,7 +472,7 @@ h1 {
   z-index: 2;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 2rem 0 2rem 2rem;
 }
 
 .header-primary > :first-child {
