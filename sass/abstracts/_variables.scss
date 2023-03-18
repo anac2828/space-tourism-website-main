@@ -1,53 +1,50 @@
-
 $clr-dark: 230 35% 7%;
 $clr-light: 231 77% 90%;
 $clr-white: 0 0% 100%;
 
-:root{
+:root {
   --clr-light: #{$clr-light};
   --clr-dark: #{$clr-dark};
   --clr-white: #{$clr-white};
-  --gap: 2rem;
 
-      /* font-sizes */
-    --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
-    --fs-800: 6.25rem;
-    --fs-700: 3.5rem;
-    --fs-600: 2rem;
-    --fs-500: 1.75rem;
-    --fs-400: 1.125rem;
-    --fs-300: 1rem;
-    --fs-200: 0.875rem;
-    
-    /* font-families */
-    --ff-serif: "Bellefair", serif;
-    --ff-sans-cond: "Barlow Condensed", sans-serif;
-    --ff-sans-normal: "Barlow", sans-serif;
-    
+  /* font-sizes */
+  --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+  --fs-800: 6.25rem;
+  --fs-700: 3.5rem;
+  --fs-600: 2rem;
+  --fs-500: 1.75rem;
+  --fs-400: 1.125rem;
+  --fs-300: 1rem;
+  --fs-200: 0.875rem;
 
-    // MEDIA QUERIES
+  /* font-families */
+  --ff-serif: 'Bellefair', serif;
+  --ff-sans-cond: 'Barlow Condensed', sans-serif;
+  --ff-sans-normal: 'Barlow', sans-serif;
 
-    --media-100: 38em;
-    --media-200: 56.25em;
+  // MEDIA QUERIES
+
+  --media-100: 38em;
+  --media-200: 56.25em;
 }
 
 // 560px
 @media (min-width: 38em) {
-    :root {
-        --fs-800: 5rem;
-        --fs-700: 2.5rem;
-        --fs-600: 1.5rem;
-        --fs-400: 1rem;
-    }
+  :root {
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-400: 1rem;
+  }
 }
 
 // 720px
 @media (min-width: 56.25em) {
-    :root {
-        /* font-sizes */
-        --fs-800: 6.25rem;
-        --fs-700: 3.5rem;
-        --fs-600: 2rem;
-        --fs-400: 1.125rem;
-    }
+  :root {
+    /* font-sizes */
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-400: 1.125rem;
+  }
 }
