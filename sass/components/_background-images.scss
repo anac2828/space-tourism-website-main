@@ -1,14 +1,28 @@
-.home{
-  background-image: url('../assets/home/background-home-mobile.jpg');
-  // background-repeat: no-repeat;
+.bg-img {
   background-size: cover;
   background-position: bottom;
 
-  @include mediaTablet{
-    background-image: url('../assets/home/background-home-tablet.jpg');
+  &__home {
+    background-image: url('../assets/home/background-home-mobile.jpg');
+
+    @include mediaTablet {
+      background-image: url('../assets/home/background-home-tablet.jpg');
+    }
+
+    @include mediaDesktop {
+      background-image: url('../assets/home/background-home-desktop.jpg');
+    }
   }
-  
-  @include mediaDesktop{
-    background-image: url('../assets/home/background-home-desktop.jpg');
+
+  &__destination {
+    background-image: url('../assets/destination/background-destination-mobile.jpg');
+
+    @include mediaTablet {
+      background-image: url('../assets/destination/background-destination-tablet.jpg');
+    }
+
+    @include mediaDesktop {
+      background-image: url('../assets/destination/background-destination-desktop.jpg');
+    }
   }
 }
