@@ -1,11 +1,16 @@
-import View from "./View";
-import moon from "../../assets/destination/image-moon.png";
-import mars from "../../assets/destination/image-mars.png";
-import europa from "../../assets/destination/image-europa.png";
-import titan from "../../assets/destination/image-titan.png";
+import View from './View';
+import moon from '../../assets/destination/image-moon.png';
+import mars from '../../assets/destination/image-mars.png';
+import europa from '../../assets/destination/image-europa.png';
+import titan from '../../assets/destination/image-titan.png';
 
 class Destination extends View {
+  renderImages() {
+    const images = this.data.destination.map(des => des.name.toLowerCase());
+    console.log(images);
+  }
   generateMarkup() {
+    this.renderImages();
     return `
     <div class="main__left-container">
         <h1 class="numbered-title" id="main-heading">${this.data.heading}</h1>

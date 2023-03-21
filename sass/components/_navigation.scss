@@ -1,25 +1,87 @@
 .primary-nav {
   --font-size: var(--fs-400);
+  backdrop-filter: blur(20px);
+  background-color: hsl(var(--clr-white) / 0.1);
+
+  // 900px and above
+  @include mediaDesktop {
+    position: relative;
+    padding-top: 2rem;
+  }
+
+  // TABLET NAV STYLES
+  // 608px and 900px
+  @include mediaTablet {
+    --nav-gap: clamp(2rem, 5vw, 4rem);
+    padding-top: 2rem;
+    // hides numbers
+    .nav__link span {
+      display: none;
+    }
+  }
+
+  @include mediaMobile {
+    padding-inline: clamp(2rem, 5vw, 7rem);
+  }
+
+  // MOBILE NAV STYLES
+  // 608px
+  @media (max-width: 38em) {
+    --nav-gap: 2.5rem;
+    --nav-item-padding: 0;
+    --nav-item-border: 0;
+    position: absolute;
+    inset: 0 0 0 30%;
+    translate: 100%;
+    transition: translate 0.2s ease-in;
+    flex-direction: column;
+    // will chose the smaller of the two
+    padding: min(8rem, 20vh) 4rem;
+
+    .nav__item:hover,
+    .nav__item:focus {
+      padding-right: 1rem;
+      border-right: 0.2rem solid hsl(var(--clr-white) / 0.5);
+    }
+
+    .nav__item.active,
+    .nav__item[aria-selected='true'] {
+      border-right: 0.2rem solid hsl(var(--clr-white) / 1);
+    }
+
+    .nav[data-visible='true'] {
+      translate: 0;
+    }
+  }
 }
 
 // smaller bottom padding and accent color
 .secondary-nav {
   --nav-gap: 2rem;
-  cursor: pointer;
   --nav-item-padding: 0.5rem;
+  justify-content: space-between;
+  translate: 0;
 
   .nav__item {
+    cursor: pointer;
     color: hsl(var(--clr-light));
     background-color: transparent;
     border: 0;
+
+    &[aria-selected='true'] {
+      color: hsl(var(--clr-white));
+      border-bottom: 0.2rem solid hsl(var(--clr-white) / var(--border-opacity, 1));
+    }
+  }
+
+  @include mediaMobile {
+    translate: 0;
   }
 }
 
 // nav styles applicable to both primary and secondary navs
 .nav {
   font-family: var(--ff-sans-cond);
-  backdrop-filter: blur(20px);
-  background-color: hsl(var(--clr-white) / 0.1);
 
   &__list {
     list-style: none;
@@ -53,61 +115,6 @@
     color: hsl(var(--clr-white));
     transition: all 0.2s;
     --span-color: hsl(var(--clr-white));
-  }
-
-  // 900px and above
-  @include mediaDesktop {
-    position: relative;
-    padding-top: 2rem;
-  }
-
-  // TABLET NAV STYLES
-  // 608px and 900px
-  @include mediaTablet {
-    --nav-gap: clamp(2rem, 5vw, 4rem);
-    padding-top: 2rem;
-    // hides numbers
-    &__link span {
-      display: none;
-    }
-  }
-
-  @include mediaMobile {
-    padding-inline: clamp(2rem, 5vw, 7rem);
-  }
-
-  // MOBILE NAV STYLES
-  // 608px
-  @media (max-width: 38em) {
-    --nav-gap: 2.5rem;
-    --nav-item-padding: 0;
-    --nav-item-border: 0;
-    position: absolute;
-    inset: 0 0 0 30%;
-    translate: 100%;
-    transition: translate 0.2s ease-in;
-
-    // will chose the smaller of the two
-    padding: min(8rem, 20vh) 4rem;
-
-    &__list {
-      flex-direction: column;
-    }
-
-    &__item:hover,
-    &__item:focus {
-      padding-right: 1rem;
-      border-right: 0.2rem solid hsl(var(--clr-white) / 0.5);
-    }
-
-    &__item.active,
-    &__item[aria-selected='true'] {
-      border-right: 0.2rem solid hsl(var(--clr-white) / 1);
-    }
-
-    &[data-visible='true'] {
-      translate: 0;
-    }
   }
 }
 
