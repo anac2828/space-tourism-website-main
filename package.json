@@ -4,8 +4,12 @@
   "description": "![Design preview for the Space tourism website coding challenge](./preview.jpg)",
   "default": "index.html",
   "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "dev": "parcel index.html assets/**",
+    "build": "parcel build index.html assets/** static/** --dist-dir ./dist"
+  },
+  "staticFiles": {
+    "staticPath": "static",
+    "watcherGlob": "**"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +17,7 @@
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
     "parcel": "^2.8.3",
+    "parcel-reporter-static-files-copy": "^1.5.0",
     "sass": "^1.59.1"
   }
 }
