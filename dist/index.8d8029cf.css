@@ -414,7 +414,7 @@ h1 {
     flex-direction: column;
     padding: min(8rem, 20vh) 4rem;
     transition: translate .2s ease-in;
-    position: absolute;
+    position: fixed;
     inset: 0 0 0 30%;
     translate: 100%;
   }
@@ -512,7 +512,6 @@ h1 {
 
   .mobile-nav-toggle + .nav {
     position: absolute;
-    inset: 0;
   }
 }
 

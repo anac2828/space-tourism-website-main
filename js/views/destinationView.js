@@ -10,10 +10,9 @@ class Destination extends View {
   //     des.name.toLowerCase()
   //   );
   // }
-  parentElementSecondaryNav = document.querySelector("#main");
+  parentElementSecondaryNav = document.querySelector('#main');
 
   generateMarkup() {
-    console.log(this.data);
     return `
     <div class="main__left-container">
         <h1 class="numbered-title" id="main-heading">${this.data.heading}</h1>
@@ -49,12 +48,31 @@ class Destination extends View {
     </div>`;
   }
 
+  renderTabContent() {
+    console.log(this.data);
+
+    return `<h2 class="heading heading--primary">${this.data.tabContent}</h2>`;
+  }
+
   addHandlerSlidesNav(handler) {
-    this.parentElementSecondaryNav.addEventListener("click", e => {
-      const tab = e.target.closest(".nav__item");
-      if (!tab) return;
-      const id = tab.textContent;
-      handler(id);
+    ['click', 'load'].forEach(listener => {
+      window.addEventListener(listener, e => {
+        let tab = '';
+
+        console.log(e.type);
+        if (e.type === 'load') {
+          tab = e.target
+            .querySelector('.secondary-nav')
+            .querySelector('.nav__item[aria-selected="true"]');
+        }
+
+        if (e.type === 'click') {
+          // currently selected tab
+          tab = e.target.closest('.nav__item');
+        }
+
+        handler(tab.textContent);
+      });
     });
   }
 }

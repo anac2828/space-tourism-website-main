@@ -1,5 +1,5 @@
-import destinationView from "./views/destinationView";
-import * as model from "./model";
+import destinationView from './views/destinationView';
+import * as model from './model';
 
 function mainNavController() {
   const id = window.location.hash.slice(1);
@@ -16,11 +16,12 @@ function mainNavController() {
 }
 
 function secondaryNavController(id) {
-  const index = model.state.destination.findIndex(
-    content => content.name === id
-  );
+  // Get index to load selected tab data
+  const index = model.state.destination.findIndex(content => content.name === id);
 
-  console.log(model.state.destination[index]);
+  model.loadSelectedTab(index);
+
+  destinationView.renderTabContent();
 }
 
 const init = function () {

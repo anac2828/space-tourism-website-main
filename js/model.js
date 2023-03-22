@@ -1,15 +1,18 @@
-import data from "../data.json";
-export const state = { heading: "" };
+import data from '../data.json';
+export const state = { heading: '' };
 
 // MODEL
 export const loadHeading = function (id, element) {
   if (element) {
     // Get inner HTML info from NAV LINK and save to state
     for (const link of element.children) {
-      if (link.children[0].textContent === id)
-        state.heading = link.children[0].innerHTML;
+      if (link.children[0].textContent === id) state.heading = link.children[0].innerHTML;
     }
   }
+};
+
+export const loadSelectedTab = function (index) {
+  state.tabContent = state.destination[index];
 };
 
 export const loadPageData = function (id) {

@@ -30,7 +30,7 @@
     --nav-gap: 2.5rem;
     --nav-item-padding: 0;
     --nav-item-border: 0;
-    position: absolute;
+    position: fixed;
     inset: 0 0 0 30%;
     translate: 100%;
     transition: translate 0.2s ease-in;
@@ -113,7 +113,6 @@
   }
 
   @media (max-width: 38em) {
-    
   }
 }
 
@@ -140,15 +139,13 @@
 
   @media (max-width: 38em) {
     display: block;
-   
-    & + .nav{
+
+    & + .nav {
       position: absolute;
-      inset: 0;
     }
   }
 
   & + .nav[data-visible='true'] .nav__list {
-      translate: 0;
+    translate: 0;
   }
-
 }
