@@ -427,17 +427,12 @@ h1 {
   .primary-nav .nav__item.active, .primary-nav .nav__item[aria-selected="true"] {
     border-right: .2rem solid hsl(var(--clr-white) / 1);
   }
-
-  .primary-nav .nav[data-visible="true"] {
-    translate: 0;
-  }
 }
 
 .secondary-nav {
   --nav-gap: 2rem;
   --nav-item-padding: .5rem;
   justify-content: space-between;
-  translate: 0;
 }
 
 .secondary-nav .nav__item {
@@ -514,6 +509,15 @@ h1 {
   .mobile-nav-toggle {
     display: block;
   }
+
+  .mobile-nav-toggle + .nav {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.mobile-nav-toggle + .nav[data-visible="true"] .nav__list {
+  translate: 0;
 }
 
 .header-primary {

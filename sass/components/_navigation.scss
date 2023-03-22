@@ -48,10 +48,6 @@
     .nav__item[aria-selected='true'] {
       border-right: 0.2rem solid hsl(var(--clr-white) / 1);
     }
-
-    .nav[data-visible='true'] {
-      translate: 0;
-    }
   }
 }
 
@@ -60,7 +56,6 @@
   --nav-gap: 2rem;
   --nav-item-padding: 0.5rem;
   justify-content: space-between;
-  translate: 0;
 
   .nav__item {
     cursor: pointer;
@@ -116,6 +111,10 @@
     transition: all 0.2s;
     --span-color: hsl(var(--clr-white));
   }
+
+  @media (max-width: 38em) {
+    
+  }
 }
 
 .mobile-nav-toggle {
@@ -141,5 +140,15 @@
 
   @media (max-width: 38em) {
     display: block;
+   
+    & + .nav{
+      position: absolute;
+      inset: 0;
+    }
   }
+
+  & + .nav[data-visible='true'] .nav__list {
+      translate: 0;
+  }
+
 }

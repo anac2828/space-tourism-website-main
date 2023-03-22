@@ -1,6 +1,5 @@
 export default class View {
   #parentElement = document.querySelector(".main__content");
-  #mainHeadingElement = document.querySelector("#main-heading");
   #btnMobileNav = document.querySelector(".mobile-nav-toggle");
   #navContainer = document.querySelector("#primary-navigation");
   // Public
@@ -51,7 +50,6 @@ export default class View {
       }
     });
   }
-
   // Data recieved from the controller and saved to the #data variable
   render(data) {
     this.data = data;
@@ -64,8 +62,7 @@ export default class View {
     this.#parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
-  renderHeading() {}
-
+  // the controller will use to change the page being render
   addHandlerRender(handler) {
     ["hashchange", "load"].forEach(listenerEvent => {
       window.addEventListener(listenerEvent, handler);

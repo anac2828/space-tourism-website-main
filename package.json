@@ -4,8 +4,8 @@
   "description": "![Design preview for the Space tourism website coding challenge](./preview.jpg)",
   "default": "index.html",
   "scripts": {
-    "dev": "parcel index.html assets/**",
-    "build": "parcel build index.html assets/** static/** --dist-dir ./dist"
+    "dev": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "staticFiles": {
     "staticPath": "static",

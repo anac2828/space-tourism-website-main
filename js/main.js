@@ -1,7 +1,7 @@
 import destinationView from "./views/destinationView";
 import * as model from "./model";
 
-function controller() {
+function mainNavController() {
   const id = window.location.hash.slice(1);
   const pageId = id.slice(2).toLowerCase();
 
@@ -9,15 +9,23 @@ function controller() {
   // heading data comes from the clicked navigation tab.
   model.loadHeading(id, destinationView.navListPrimary);
   model.loadPageData(pageId);
-  console.log(model.state);
 
+  // RENDER MARKUP
   // render markup with data from state
   destinationView.render(model.state);
 }
 
+function secondaryNavController(id) {
+  const index = model.state.destination.findIndex(
+    content => content.name === id
+  );
+
+  console.log(model.state.destination[index]);
+}
+
 const init = function () {
   // Controller funtcion will run when the hash is changed or page is loaded
-  destinationView.addHandlerRender(controller);
+  destinationView.addHandlerRender(mainNavController);
+  destinationView.addHandlerSlidesNav(secondaryNavController);
 };
-
 init();

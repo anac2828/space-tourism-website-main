@@ -5,12 +5,15 @@ import europa from '../../assets/destination/image-europa.png';
 import titan from '../../assets/destination/image-titan.png';
 
 class Destination extends View {
-  renderImages() {
-    const images = this.data.destination.map(des => des.name.toLowerCase());
-    console.log(images);
-  }
+  // renderImages() {
+  //   const images = this.data.destination.map(des =>
+  //     des.name.toLowerCase()
+  //   );
+  // }
+  parentElementSecondaryNav = document.querySelector("#main");
+
   generateMarkup() {
-    this.renderImages();
+    console.log(this.data);
     return `
     <div class="main__left-container">
         <h1 class="numbered-title" id="main-heading">${this.data.heading}</h1>
@@ -44,6 +47,15 @@ class Destination extends View {
         </div>
       </div>
     </div>`;
+  }
+
+  addHandlerSlidesNav(handler) {
+    this.parentElementSecondaryNav.addEventListener("click", e => {
+      const tab = e.target.closest(".nav__item");
+      if (!tab) return;
+      const id = tab.textContent;
+      handler(id);
+    });
   }
 }
 
