@@ -11,9 +11,8 @@ function mainNavController() {
   model.loadHeading(headingText, destinationView.navListPrimary);
   model.setPageId(pageId);
   // load all tab content for selected
-  model.loadPageData(pageId);
-  console.log(model.state);
   // load data for the selected tab
+  model.loadPageData(pageId);
   model.loadSelectedTab(pageId, 0);
   /****/
 
@@ -24,7 +23,9 @@ function mainNavController() {
 
 function secondaryNavController(pageId, tabText) {
   // Get index to load selected tab data
-  const index = model.state[pageId].findIndex(content => content.name === tabText);
+  const index = model.state[pageId].findIndex(
+    content => content.name === tabText
+  );
 
   // LOAD DATA
 
@@ -32,6 +33,7 @@ function secondaryNavController(pageId, tabText) {
 
   // RENDER CONTENT
   destinationView.render(model.state);
+  console.log(pageId, model.state);
 }
 
 const init = function () {
