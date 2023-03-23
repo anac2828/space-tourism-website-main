@@ -11,10 +11,15 @@ export const loadHeading = function (id, element) {
   }
 };
 
-export const loadSelectedTab = function (index) {
-  state.tabContent = state.destination[index];
+export const setPageId = function (id) {
+  state.pageId = id;
 };
 
 export const loadPageData = function (id) {
   state[id] = data[id];
 };
+
+export const loadSelectedTab = function (id, index) {
+  state.tabContent = state[id][index];
+};
+
