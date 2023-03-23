@@ -1,10 +1,10 @@
 export default class View {
-  #parentElement = document.querySelector(".main__content");
-  #btnMobileNav = document.querySelector(".mobile-nav-toggle");
-  #navContainer = document.querySelector("#primary-navigation");
+  #parentElement = document.querySelector('.main__content');
+  #btnMobileNav = document.querySelector('.mobile-nav-toggle');
+  #navContainer = document.querySelector('#primary-navigation');
   // Public
   data;
-  navListPrimary = document.querySelector(".primary-nav");
+  navListPrimary = document.querySelector('.primary-nav');
 
   constructor() {
     this.#addHandlerNav();
@@ -12,25 +12,23 @@ export default class View {
   }
 
   #addHandlerMobileNav() {
-    this.#btnMobileNav.addEventListener("click", () => {
-      this.#btnMobileNav.getAttribute("aria-expanded");
+    this.#btnMobileNav.addEventListener('click', () => {
+      this.#btnMobileNav.getAttribute('aria-expanded');
       const isOpen =
-        this.#btnMobileNav.getAttribute("aria-expanded") === "false"
-          ? "true"
-          : "false";
-      this.#btnMobileNav.setAttribute("aria-expanded", isOpen);
-      this.#navContainer.setAttribute("data-visible", isOpen);
+        this.#btnMobileNav.getAttribute('aria-expanded') === 'false' ? 'true' : 'false';
+      this.#btnMobileNav.setAttribute('aria-expanded', isOpen);
+      this.#navContainer.setAttribute('data-visible', isOpen);
     });
   }
 
   #addHandlerNav() {
-    this.navListPrimary.addEventListener("click", event => {
+    this.navListPrimary.addEventListener('click', event => {
       // to prevent propagation
-      const e = event.target.closest(".nav__item");
+      const e = event.target.closest('.nav__item');
 
       if (e === null) return;
 
-      e.classList.toggle("active");
+      e.classList.toggle('active');
       console.log(e.parentElement);
 
       // get text content from nav link
@@ -38,8 +36,8 @@ export default class View {
 
       // prevent from page reloading
       if (
-        navLink.textContent != "00Home" &&
-        window.location.pathname === "/pages/page.html"
+        navLink.textContent != '00Home' &&
+        window.location.pathname === '/pages/page.html'
       )
         event.preventDefault();
 
@@ -48,23 +46,24 @@ export default class View {
 
       // close navigation
       if (this.#btnMobileNav) {
-        this.#navContainer.setAttribute("data-visible", "false");
-        this.#btnMobileNav.setAttribute("aria-expanded", "false");
+        this.#navContainer.setAttribute('data-visible', 'false');
+        this.#btnMobileNav.setAttribute('aria-expanded', 'false');
       }
     });
   }
   // Data recieved from the controller and saved to the #data variable
   render(data) {
     this.data = data;
+    console.log('render', this.data);
 
-    this.#parentElement.innerHTML = "";
+    this.#parentElement.innerHTML = '';
 
     if (!this.#parentElement) return;
     // markup from the child class
     const markup = this.generateMarkup();
     // insert markup into DOM
 
-    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
   // renderTabContent(data) {
@@ -74,7 +73,7 @@ export default class View {
 
   // the controller will use to change the page being render
   addHandlerRender(handler) {
-    ["hashchange", "load"].forEach(listenerEvent => {
+    ['hashchange', 'load'].forEach(listenerEvent => {
       window.addEventListener(listenerEvent, handler);
     });
   }

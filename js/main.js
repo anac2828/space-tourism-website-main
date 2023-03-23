@@ -12,27 +12,26 @@ function mainNavController() {
   model.setPageId(pageId);
   // load all tab content for selected
   model.loadPageData(pageId);
+  console.log(model.state);
   // load data for the selected tab
   model.loadSelectedTab(pageId, 0);
   /****/
 
   // RENDER MARKUP
   // render markup with data from stat
-  destinationView.render(model.state.tabContent);
+  destinationView.render(model.state);
 }
 
 function secondaryNavController(pageId, tabText) {
   // Get index to load selected tab data
-  const index = model.state[pageId].findIndex(
-    content => content.name === tabText
-  );
+  const index = model.state[pageId].findIndex(content => content.name === tabText);
 
   // LOAD DATA
 
   model.loadSelectedTab(pageId, index);
 
   // RENDER CONTENT
-  destinationView.render(model.state.tabContent);
+  destinationView.render(model.state);
 }
 
 const init = function () {

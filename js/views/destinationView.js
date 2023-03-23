@@ -10,16 +10,15 @@ class Destination extends View {
   //     des.name.toLowerCase()
   //   );
   // }
-  parentElementSecondaryNav = document.querySelector("#main");
+  parentElementSecondaryNav = document.querySelector('#main');
   #images = { moon, mars, europa, titan };
 
   generateMarkup() {
     if (!this.data) return;
+    console.log('markup', this.data.tabContent);
     return `
     <div class="main__left-container">
-        <h1 class="numbered-title" id="main-heading">${
-          this.data.heading
-        }</h1>
+        <h1 class="numbered-title" id="main-heading">${this.data.heading}</h1>
         <div class="main__left-content">
           <img class="page-img" src="${
             this.#images[this.data.name.toLowerCase()]
@@ -43,15 +42,11 @@ class Destination extends View {
         <div class="description__more-info">
           <div>
           <p class="heading heading--secondary-subhead">Avg. Distance</p>
-          <p class="heading heading--primary-subhead">${
-            this.data.distance
-          }</p>
+          <p class="heading heading--primary-subhead">${this.data.distance}</p>
           </div>
           <div>
           <p class="heading heading--secondary-subhead">Est. Travel Time</p>
-          <p class="heading heading--primary-subhead">${
-            this.data.travel
-          }</p>
+          <p class="heading heading--primary-subhead">${this.data.travel}</p>
           </div>
         </div>
       </div>
@@ -59,22 +54,22 @@ class Destination extends View {
   }
 
   addHandlerSlidesNav(handler) {
-    ["click"].forEach(listener => {
+    ['click'].forEach(listener => {
       window.addEventListener(listener, e => {
-        let tab = "";
+        let tab = '';
 
-        if (e.type === "load") {
+        if (e.type === 'load') {
           tab = e.target
-            .querySelector(".secondary-nav")
+            .querySelector('.secondary-nav')
             .querySelector('.nav__item[aria-selected="true"]');
         }
 
-        if (e.type === "click") {
+        if (e.type === 'click') {
           // currently selected tab
-          tab = e.target.closest(".nav__item");
+          tab = e.target.closest('.nav__item');
         }
 
-        handler("destination", tab.textContent, e.type);
+        handler('destination', tab.textContent, e.type);
       });
     });
   }
