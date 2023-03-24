@@ -5,16 +5,17 @@ import europa from '../../assets/destination/image-europa.png';
 import titan from '../../assets/destination/image-titan.png';
 
 class Destination extends View {
+  tabId;
+  clickedTab;
   // renderImages() {
   //   const images = this.data.tabContent.destination.map(des =>
   //     des.name.toLowerCase()
   //   );
   // }
-  parentElementSecondaryNav = document.querySelector("#main");
+  #parentElementSecondaryNav = document.querySelector("#main");
   #images = { moon, mars, europa, titan };
 
   generateMarkup() {
-    console.log("markup", this.data);
     if (!this.data) return;
     return `
     <div class="main__left-container">
@@ -30,10 +31,10 @@ class Destination extends View {
 
     <div class="main__right-content">
       <nav class="nav nav__list secondary-nav">
-        <button aria-selected="true" class="nav__item">Moon</button>
-        <button aria-selected="false" class="nav__item">Mars</button>
-        <button aria-selected="false" class="nav__item">Europa</button>
-        <button aria-selected="false" class="nav__item">Titan</button>
+        <button aria-selected="true" class="nav__item" id="Moon">Moon</button>
+        <button aria-selected="false" class="nav__item" id="Mars">Mars</button>
+        <button aria-selected="false" class="nav__item" id="Europa">Europa</button>
+        <button aria-selected="false" class="nav__item" id="Titan">Titan</button>
       </nav>
 
       <div class="discription">
@@ -63,24 +64,26 @@ class Destination extends View {
     </div>`;
   }
 
+  setActiveTab() {
+    const nav =
+      this.#parentElementSecondaryNav.querySelector(".secondary-nav");
+
+    // localStorage.setItem("current-tab", this.tabId);
+
+    // this.tabId = localStorage.getItem("current-tab");
+
+    this.clickedTab = nav.querySelector(`#${this.tabId}`);
+    // console.log(this.clickedTab);
+    this.clickedTab.setAttribute("aria-selected", "true");
+  }
+
   addHandlerSlidesNav(handler) {
-    ["click"].forEach(listener => {
-      window.addEventListener(listener, e => {
-        let tab = "";
+    this.#parentElementSecondaryNav.addEventListener("click", e => {
+      this.clickedTab = e.target.closest(".nav__item");
 
-        if (e.type === "load") {
-          tab = e.target
-            .querySelector(".secondary-nav")
-            .querySelector('.nav__item[aria-selected="true"]');
-        }
+      this.tabId = this.clickedTab.id;
 
-        if (e.type === "click") {
-          // currently selected tab
-          tab = e.target.closest(".nav__item");
-        }
-
-        handler("destination", tab.textContent, e.type);
-      });
+      handler("destination", this.tabId);
     });
   }
 }

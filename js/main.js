@@ -22,18 +22,23 @@ function mainNavController() {
 }
 
 function secondaryNavController(pageId, tabText) {
+  if (!pageId) return;
+  console.log(pageId, tabText);
   // Get index to load selected tab data
-  const index = model.state[pageId].findIndex(
+  const index = model.state[pageId]?.findIndex(
     content => content.name === tabText
   );
 
+  console.log(model.state[pageId]);
   // LOAD DATA
 
   model.loadSelectedTab(pageId, index);
 
   // RENDER CONTENT
   destinationView.render(model.state);
-  console.log(pageId, model.state);
+
+  // SET CLICKED TAB TO ACTIVE STYLE
+  destinationView.setActiveTab();
 }
 
 const init = function () {

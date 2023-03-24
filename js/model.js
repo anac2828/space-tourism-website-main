@@ -20,6 +20,7 @@ export const loadPageData = function (id) {
 };
 
 export const loadSelectedTab = function (id, index) {
+  if (!state[id]) return;
   state.tabContent = state[id][index];
 };
 

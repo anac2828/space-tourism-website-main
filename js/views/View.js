@@ -22,13 +22,14 @@ export default class View {
   }
 
   #addHandlerNav() {
-    this.navListPrimary.addEventListener('click', event => {
+    
+    this.navListPrimary.addEventListener("click", event => {
       // to prevent propagation
-      const e = event.target.closest('.nav__item');
+      const e = event.target.closest(".nav__item");
 
       if (e === null) return;
 
-      e.classList.toggle('active');
+      e.classList.toggle("active");
       console.log(e.parentElement);
 
       // get text content from nav link
@@ -36,8 +37,8 @@ export default class View {
 
       // prevent from page reloading
       if (
-        navLink.textContent != '00Home' &&
-        window.location.pathname === '/pages/page.html'
+        navLink.textContent != "00Home" &&
+        window.location.pathname === "/pages/page.html"
       )
         event.preventDefault();
 
@@ -46,16 +47,15 @@ export default class View {
 
       // close navigation
       if (this.#btnMobileNav) {
-        this.#navContainer.setAttribute('data-visible', 'false');
-        this.#btnMobileNav.setAttribute('aria-expanded', 'false');
+        this.#navContainer.setAttribute("data-visible", "false");
+        this.#btnMobileNav.setAttribute("aria-expanded", "false");
       }
     });
   }
   // Data recieved from the controller and saved to the #data variable
   render(data) {
+    if (!this.#parentElement) return;
     this.data = data;
-    console.log('render', this.data);
-
     this.#parentElement.innerHTML = '';
 
     if (!this.#parentElement) return;
