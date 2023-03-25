@@ -2,8 +2,10 @@ import destinationView from './views/destinationView';
 import * as model from './model';
 
 function mainNavController() {
+
   const headingText = window.location.hash.slice(1);
   const pageId = headingText.slice(2).toLowerCase();
+
   if (!pageId) return;
   /****/
   // LOAD DATA TO STATE OBJECT
