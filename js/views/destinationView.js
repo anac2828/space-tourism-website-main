@@ -19,9 +19,7 @@ class Destination extends View {
     if (!this.data) return;
     return `
     <div class="main__left-container">
-        <h1 class="numbered-title" id="main-heading">${
-          this.data.heading
-        }</h1>
+        <h1 class="numbered-title" id="main-heading">${this.data.heading}</h1>
         <div class="main__left-content">
           <img class="page-img" src="${
             this.#images[this.data.tabContent.name.toLowerCase()]
@@ -38,26 +36,18 @@ class Destination extends View {
       </nav>
 
       <div class="discription">
-        <h2 class="heading heading--primary">${
-          this.data.tabContent.name
-        }</h2>
+        <h2 class="heading heading--primary">${this.data.tabContent.name}</h2>
 
-        <p class="description__text">${
-          this.data.tabContent.description
-        }</p>
+        <p class="description__text">${this.data.tabContent.description}</p>
 
         <div class="description__more-info">
           <div>
           <p class="heading heading--secondary-subhead">Avg. Distance</p>
-          <p class="heading heading--primary-subhead">${
-            this.data.tabContent.distance
-          }</p>
+          <p class="heading heading--primary-subhead">${this.data.tabContent.distance}</p>
           </div>
           <div>
           <p class="heading heading--secondary-subhead">Est. Travel Time</p>
-          <p class="heading heading--primary-subhead">${
-            this.data.tabContent.travel
-          }</p>
+          <p class="heading heading--primary-subhead">${this.data.tabContent.travel}</p>
           </div>
         </div>
       </div>
@@ -65,36 +55,35 @@ class Destination extends View {
   }
 
   setActiveTab() {
-    
-    if (!this.tabId) this.tabId = "Moon";
-    console.log(this.tabId);
-    // Save tab name to local storage
+    // Get tab from local storage
+    this.getActiveTab();
 
-    this.tabId = localStorage.getItem("current-tab");
+    if (!this.tabId) this.tabId = 'Moon';
 
-    const nav =
-      this.#parentElementSecondaryNav.querySelector(".secondary-nav");
+    const nav = this.#parentElementSecondaryNav.querySelector('.secondary-nav');
 
     this.clickedTab = nav.querySelector(`#${this.tabId}`);
 
-    this.clickedTab.setAttribute("aria-selected", "true");
+    this.clickedTab.setAttribute('aria-selected', 'true');
   }
 
-  getActiveTab() {}
+  getActiveTab() {
+    return (this.tabId = localStorage.getItem('current-tab'));
+  }
 
   addHandlerSlidesNav(handler) {
     this.#parentElementSecondaryNav.addEventListener('click', e => {
       // Get the element of the clicked on tab
-      this.clickedTab = e.target.closest(".nav__item");
+      this.clickedTab = e.target.closest('.nav__item');
 
       // Get the name of the tab
       this.tabId = this.clickedTab.id;
 
       // Save tab name to local storage
-      localStorage.setItem("current-tab", this.tabId);
+      localStorage.setItem('current-tab', this.tabId);
 
       //Handler will load data of the clicked tab
-      handler("destination", this.tabId);
+      handler('destination', this.tabId);
     });
   }
 }

@@ -1,21 +1,28 @@
 import destinationView from './views/destinationView';
 import * as model from './model';
 
-function mainNavController() {
+const getTabIndex = (tabId, pageId, data) =>
+  data[pageId]?.findIndex(content => content.name === tabId);
 
+function mainNavController() {
   const headingText = window.location.hash.slice(1);
   const pageId = headingText.slice(2).toLowerCase();
+
+  const tabId = destinationView.getActiveTab();
 
   if (!pageId) return;
   /****/
   // LOAD DATA TO STATE OBJECT
   // heading data comes from the clicked navigation tab.
   model.loadHeading(headingText, destinationView.navListPrimary);
-  model.setPageId(pageId);
+
   // load all tab content for selected
   // load data for the selected tab
   model.loadPageData(pageId);
-  model.loadSelectedTab(pageId, 0);
+
+  const index = getTabIndex(tabId, pageId, model.state);
+
+  model.loadSelectedTab(pageId, index);
   /****/
 
   // RENDER MARKUP
@@ -23,24 +30,17 @@ function mainNavController() {
   destinationView.render(model.state);
 }
 
-function secondaryNavController(pageId, tabText) {
+function secondaryNavController(pageId, tabId) {
   if (!pageId) return;
-  console.log(pageId, tabText);
+
   // Get index to load selected tab data
-  const index = model.state[pageId]?.findIndex(
-    content => content.name === tabText
-  );
+  const index = getTabIndex(tabId, pageId, model.state);
 
-  console.log(model.state[pageId]);
   // LOAD DATA
-
   model.loadSelectedTab(pageId, index);
 
   // RENDER CONTENT
   destinationView.render(model.state);
-
-  // SET CLICKED TAB TO ACTIVE STYLE
-  destinationView.setActiveTab();
 }
 
 const init = function () {
