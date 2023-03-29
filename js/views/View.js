@@ -5,6 +5,7 @@ export default class View {
   // Public
   data;
   navListPrimary = document.querySelector('.primary-nav');
+  heading;
 
   constructor() {
     this.#addHandlerNav();

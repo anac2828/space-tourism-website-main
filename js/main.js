@@ -5,6 +5,10 @@ const getTabIndex = (tabId, pageId, data) =>
   data[pageId]?.findIndex(content => content.name === tabId);
 
 function loadDestinationPage() {
+  mainNavController();
+
+  //get tab id to load data
+  const tabId = destinationView.getActiveTab();
   // RENDER MARKUP
   // render markup with data from stat
   destinationView.render(model.state);
@@ -13,9 +17,6 @@ function loadDestinationPage() {
 function mainNavController() {
   const headingText = window.location.hash.slice(1);
   const pageId = headingText.slice(2).toLowerCase();
-
-  //get tab id to load data
-  const tabId = destinationView.getActiveTab();
 
   if (!pageId) return;
 
