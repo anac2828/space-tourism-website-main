@@ -22,15 +22,26 @@ export default class View {
   }
 
   #addHandlerNav() {
+    // SET CURRENT TAB TO ACTIVE STYLE
+    const currentTab = localStorage.getItem('main-nav-tab');
+    for (const tab of this.navListPrimary.children) {
+      if (tab.textContent.trim() === currentTab) {
+        tab.classList.toggle('active');
+      }
+    }
     this.navListPrimary.addEventListener('click', event => {
       // to prevent propagation
       const e = event.target.closest('.nav__item');
 
       if (e === null) return;
 
+      // SET CLICKED TAB TO ACTIVE STYLE
       e.classList.toggle('active');
 
-      // get text content from nav link
+      // SAVE TAB TO LOCAL STORAGE
+      localStorage.setItem('main-nav-tab', e.textContent.trim());
+
+      // get text content from nav link to set the hash
       const navLink = e.children[0];
 
       // prevent from page reloading

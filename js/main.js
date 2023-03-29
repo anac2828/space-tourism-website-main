@@ -4,13 +4,21 @@ import * as model from './model';
 const getTabIndex = (tabId, pageId, data) =>
   data[pageId]?.findIndex(content => content.name === tabId);
 
+function loadDestinationPage() {
+  // RENDER MARKUP
+  // render markup with data from stat
+  destinationView.render(model.state);
+}
+
 function mainNavController() {
   const headingText = window.location.hash.slice(1);
   const pageId = headingText.slice(2).toLowerCase();
 
+  //get tab id to load data
   const tabId = destinationView.getActiveTab();
 
   if (!pageId) return;
+
   /****/
   // LOAD DATA TO STATE OBJECT
   // heading data comes from the clicked navigation tab.
@@ -24,10 +32,6 @@ function mainNavController() {
 
   model.loadSelectedTab(pageId, index);
   /****/
-
-  // RENDER MARKUP
-  // render markup with data from stat
-  destinationView.render(model.state);
 }
 
 function secondaryNavController(pageId, tabId) {

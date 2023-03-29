@@ -7,11 +7,7 @@ import titan from '../../assets/destination/image-titan.png';
 class Destination extends View {
   tabId;
   clickedTab;
-  // renderImages() {
-  //   const images = this.data.tabContent.destination.map(des =>
-  //     des.name.toLowerCase()
-  //   );
-  // }
+
   #parentElementSecondaryNav = document.querySelector('#main');
   #images = { moon, mars, europa, titan };
 
