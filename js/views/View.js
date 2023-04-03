@@ -6,6 +6,7 @@ export default class View {
   navListPrimary = document.querySelector('.primary-nav');
   data;
   heading;
+  currentTab;
 
   constructor() {
     this.#addHandlerNav();
@@ -24,19 +25,20 @@ export default class View {
 
   #addHandlerNav() {
     // SET CURRENT TAB TO ACTIVE STYLE
-    const currentTab = localStorage.getItem('main-nav-tab');
+    this.currentTab = localStorage.getItem('main-nav-tab');
+
+    if (this.currentTab === '00Home') localStorage.setItem('current-tab', 'Moon');
 
     for (const tab of this.navListPrimary.children) {
-      if (tab.textContent.trim() === currentTab) {
-        this.heading = tab.innerHTML;
-        tab.classList.toggle('active');
+      if (tab.textContent.trim() === this.currentTab) {
+        console.log(tab.textContent.trim());
+        tab.classList.add('active');
+        this.heading = tab.children[0].innerHTML;
       }
     }
-
     this.navListPrimary.addEventListener('click', event => {
       // to prevent propagation
       const e = event.target.closest('.nav__item');
-      console.log(e);
       if (e === null) return;
 
       // SET CLICKED TAB TO ACTIVE STYLE
@@ -55,7 +57,7 @@ export default class View {
       )
         event.preventDefault();
 
-      //change hash to load heading
+      //change hash to load set page id
       window.location.hash = navLink.textContent;
 
       // close navigation

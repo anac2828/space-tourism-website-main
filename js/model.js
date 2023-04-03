@@ -8,7 +8,7 @@ export const setPageId = function (id) {
 };
 
 export const loadPageData = function (pageId, tabId) {
-  console.log('load page data :', tabId);
+  if (pageId === 'home') return;
   state[pageId] = data[pageId];
 
   const index = data[pageId]?.findIndex(content => content.name === tabId);

@@ -51,11 +51,6 @@ class Destination extends View {
   setActiveTab() {
     // Get tab from local storage
     this.getActiveTab();
-    console.log(this.tabId);
-
-    // this.tabId = localStorage.getItem('current-tab');
-
-    if (!this.tabId) this.tabId = 'Moon';
 
     const nav = this.parentElement.querySelector('.secondary-nav');
 
@@ -70,8 +65,9 @@ class Destination extends View {
 
   addHandlerSlidesNav(handler) {
     if (!this.parentElement) return;
+
     this.parentElement.addEventListener('click', e => {
-      // Get the element of the clicked on tab
+      // Get the element of the clicked tab
       this.#clickedTab = e.target.closest('.nav__item');
 
       // Get the name of the tab
@@ -81,7 +77,7 @@ class Destination extends View {
       localStorage.setItem('current-tab', this.tabId);
 
       //Handler will load data of the clicked tab
-      handler('destination', this.tabId);
+      handler();
     });
   }
 }
