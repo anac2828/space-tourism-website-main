@@ -6,16 +6,14 @@ import titan from '../../assets/destination/image-titan.png';
 
 class Destination extends View {
   tabId;
-  clickedTab;
-
-  #parentElementSecondaryNav = document.querySelector('#main');
+  #clickedTab;
   #images = { moon, mars, europa, titan };
 
   generateMarkup() {
     if (!this.data) return;
     return `
     <div class="main__left-container">
-        <h1 class="numbered-title" id="main-heading">${this.data.heading}</h1>
+        <h1 class="numbered-title" id="main-heading">${this.heading}</h1>
         <div class="main__left-content">
           <img class="page-img" src="${
             this.#images[this.data.tabContent.name.toLowerCase()]
@@ -53,14 +51,17 @@ class Destination extends View {
   setActiveTab() {
     // Get tab from local storage
     this.getActiveTab();
+    console.log(this.tabId);
+
+    // this.tabId = localStorage.getItem('current-tab');
 
     if (!this.tabId) this.tabId = 'Moon';
 
-    const nav = this.#parentElementSecondaryNav.querySelector('.secondary-nav');
+    const nav = this.parentElement.querySelector('.secondary-nav');
 
-    this.clickedTab = nav.querySelector(`#${this.tabId}`);
+    this.#clickedTab = nav.querySelector(`#${this.tabId}`);
 
-    this.clickedTab.setAttribute('aria-selected', 'true');
+    this.#clickedTab.setAttribute('aria-selected', 'true');
   }
 
   getActiveTab() {
@@ -68,12 +69,13 @@ class Destination extends View {
   }
 
   addHandlerSlidesNav(handler) {
-    this.#parentElementSecondaryNav.addEventListener('click', e => {
+    if (!this.parentElement) return;
+    this.parentElement.addEventListener('click', e => {
       // Get the element of the clicked on tab
-      this.clickedTab = e.target.closest('.nav__item');
+      this.#clickedTab = e.target.closest('.nav__item');
 
       // Get the name of the tab
-      this.tabId = this.clickedTab.id;
+      this.tabId = this.#clickedTab.id;
 
       // Save tab name to local storage
       localStorage.setItem('current-tab', this.tabId);

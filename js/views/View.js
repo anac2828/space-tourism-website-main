@@ -1,10 +1,10 @@
 export default class View {
-  #parentElement = document.querySelector('.main__content');
   #btnMobileNav = document.querySelector('.mobile-nav-toggle');
   #navContainer = document.querySelector('#primary-navigation');
   // Public
-  data;
+  parentElement = document.querySelector('.main__content');
   navListPrimary = document.querySelector('.primary-nav');
+  data;
   heading;
 
   constructor() {
@@ -25,19 +25,22 @@ export default class View {
   #addHandlerNav() {
     // SET CURRENT TAB TO ACTIVE STYLE
     const currentTab = localStorage.getItem('main-nav-tab');
+
     for (const tab of this.navListPrimary.children) {
       if (tab.textContent.trim() === currentTab) {
+        this.heading = tab.innerHTML;
         tab.classList.toggle('active');
       }
     }
+
     this.navListPrimary.addEventListener('click', event => {
       // to prevent propagation
       const e = event.target.closest('.nav__item');
-
+      console.log(e);
       if (e === null) return;
 
       // SET CLICKED TAB TO ACTIVE STYLE
-      e.classList.toggle('active');
+      e.classList.add('active');
 
       // SAVE TAB TO LOCAL STORAGE
       localStorage.setItem('main-nav-tab', e.textContent.trim());
@@ -64,16 +67,16 @@ export default class View {
   }
   // Data recieved from the controller and saved to the #data variable
   render(data) {
-    if (!this.#parentElement) return;
+    if (!this.parentElement) return;
     this.data = data;
-    this.#parentElement.innerHTML = '';
+    this.parentElement.innerHTML = '';
 
-    if (!this.#parentElement) return;
+    if (!this.parentElement) return;
     // markup from the child class
     const markup = this.generateMarkup();
     // insert markup into DOM
 
-    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+    this.parentElement.insertAdjacentHTML('afterbegin', markup);
 
     this.setActiveTab();
   }
