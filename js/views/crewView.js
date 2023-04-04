@@ -1,8 +1,8 @@
-import View from "./View";
-import hurley from "../../assets/crew/image-douglas-hurley.png";
+import View from './View';
+import hurley from '../../assets/crew/image-douglas-hurley.png';
 
 class Crew extends View {
-  #crewTab = this.navListPrimary.querySelector("#crew");
+  #crewTab = this.navListPrimary.querySelector('#crew');
   generateMarkup() {
     return `
     <div class="main__left-container">
@@ -10,13 +10,10 @@ class Crew extends View {
           <span>02</span> Meet your crew
         </h1>
         <div class="main__left-content">
-          <p class="heading heading--quaternary">Uranus, Neptune, & Pluto</p>
-          <h2 class="heading heading--tertiary">Jupiter & Saturn</h2>
+          <p class="heading heading--quaternary">${this.data.tabContent.role}</p>
+          <h2 class="heading heading--tertiary">${this.data.tabContent.name}</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus
-                hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel,
-                dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet
-                viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh.
+                ${this.data.tabContent.bio}
             </p>
         </div>
 
@@ -50,12 +47,12 @@ class Crew extends View {
   crewTab(handler) {
     if (!this.#crewTab) return;
     // Make the first tab active
-    if (this.currentTab === "00Home")
+    if (this.currentTab === '00Home')
       // localStorage.setItem("current-tab", "Moon");
 
       console.log(this.#crewTab);
-    this.#crewTab.addEventListener("click", () => {
-      handler(this.#crewTab.id, "Douglas Hurley");
+    this.#crewTab.addEventListener('click', () => {
+      handler(this.#crewTab.id, 'Douglas Hurley');
     });
   }
 }
