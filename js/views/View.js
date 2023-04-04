@@ -6,6 +6,8 @@ export default class View {
   navListPrimary = document.querySelector(".primary-nav");
   data;
   currentTab;
+  clickedTab;
+  tabId = localStorage.getItem("current-tab");
 
   constructor() {
     this.#clickedNavHandler();
@@ -31,7 +33,6 @@ export default class View {
     for (const tab of this.navListPrimary.children) {
       if (tab.textContent.trim() === this.currentTab) {
         tab.classList.add("active");
-        this.heading = tab.children[0].innerHTML;
       }
     }
     this.navListPrimary.addEventListener("click", event => {
@@ -45,16 +46,14 @@ export default class View {
       // SAVE TAB TO LOCAL STORAGE
       localStorage.setItem("main-nav-tab", e.textContent.trim());
 
-      // get text content from nav link to set the hash
-      const navLink = e.children[0];
-
       // prevent from page reloading
       if (
-        navLink.textContent != "00Home" &&
+        e.children[0].textContent != "00Home" &&
         window.location.pathname === "/pages/page.html"
       )
         event.preventDefault();
-      this.currentTab = navLink;
+
+      this.currentTab = e.children[0];
 
       // close navigation
       if (this.#btnMobileNav) {

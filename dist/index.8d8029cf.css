@@ -318,16 +318,16 @@ h1 {
   display: inline-grid;
 }
 
-.btn--dot {
+.btn__dot {
   --background-opacity: .2;
   padding: .5rem;
 }
 
-.btn--dot:hover {
+.btn__dot:hover {
   --background-opacity: .5;
 }
 
-.btn--dot.active, .btn--dot[aria-selected="true"] {
+.btn__dot.active, .btn__dot[aria-selected="true"] {
   --background-opacity: 1;
 }
 

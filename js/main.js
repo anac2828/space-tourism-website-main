@@ -17,10 +17,9 @@ function loadDestinationPageController(pageId, tabId) {
 }
 
 function loadCrewController(pageId, tabId) {
-  console.log(pageId, tabId);
   model.loadPageData(pageId, tabId);
+
   crewView.render(model.state);
-  console.log(model.state);
 }
 
 function init() {
@@ -28,6 +27,7 @@ function init() {
   destinationView.destinationTab(loadDestinationPageController);
   destinationView.addHandlerSlidesNav(loadDestinationPageController);
   crewView.crewTab(loadCrewController);
+  crewView.addHandlerDotsNav(loadCrewController);
 }
 
 init();
