@@ -70,11 +70,11 @@ class Destination extends View {
   }
 
   addHandlerSlidesNav(handler) {
-    if (!this.parentElement || !this.#clickedTab) return;
+
+    if (!this.parentElement) return;
 
     // EVENT LISTENER
     this.parentElement.addEventListener("click", e => {
-      console.log(this.currentTabName);
       if (
         e.target.tagName != "BUTTON" ||
         this.currentTabName != "01Destination"
@@ -97,7 +97,7 @@ class Destination extends View {
 
   destinationTab(handler) {
     // Make the first tab active
-    if (this.currentTabName === "00Home")
+    if (this.currentTabName != "01Destination")
       localStorage.setItem("current-tab", "Moon");
 
     if (!this.#destinationTab) return;

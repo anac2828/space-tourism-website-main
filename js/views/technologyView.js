@@ -46,7 +46,7 @@ class Technology extends View {
   }
 
   addHandlerNumbsNav(handler) {
-    if (!this.parentElement || !this.#clickedTab) return;
+    if (!this.parentElement) return;
 
     // EVENT LISTENER
     this.parentElement.addEventListener("click", e => {
@@ -54,7 +54,8 @@ class Technology extends View {
 
       // Get the element of the clicked tab
       this.#clickedTab = e.target.closest(".btn--small");
-      // if (!this.#clickedTab) return;
+      if (!this.#clickedTab) return;
+
       // Get the name of the tab
       this.#tabId = this.#clickedTab.id;
 

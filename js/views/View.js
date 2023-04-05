@@ -5,8 +5,10 @@ export default class View {
   parentElement = document.querySelector(".main__content");
   navListPrimary = document.querySelector(".primary-nav");
   data;
-  currentTab;
   currentTabName = localStorage.getItem("main-nav-tab");
+  currentTab = this.navListPrimary.querySelector(
+    `#${this.currentTabName.slice(2).toLowerCase()}`
+  );
   tabId = localStorage.getItem("current-tab");
 
   constructor() {
@@ -26,18 +28,30 @@ export default class View {
     });
   }
 
-  #clickedNavHandler() {
+  setNavTabActive() {
+    console.log(this.currentTab);
     this.currentTab = this.navListPrimary.querySelector(
       `#${this.currentTabName.slice(2).toLowerCase()}`
     );
+    this.currentTab.setAttribute("aria-selected", "true");
+  }
 
+  #clickedNavHandler() {
     this.navListPrimary.addEventListener("click", event => {
+      console.log(event.target);
+      if (event.target.tagName != "LI") return;
+
       // to prevent propagation
       const e = event.target.closest(".nav__item");
+      this.currentTab = e;
+      this.currentTab.setAttribute("aria-selected", "true");
+
       if (e === null) return;
 
+      this.currentTabName = e.textContent.trim();
+      // this.currentTab.setAttribute("aria-selected", "false");
       // SAVE TAB TO LOCAL STORAGE
-      localStorage.setItem("main-nav-tab", e.textContent.trim());
+      localStorage.setItem("main-nav-tab", this.currentTabName);
 
       // prevent from page reloading
       if (
@@ -45,8 +59,6 @@ export default class View {
         window.location.pathname === "/pages/page.html"
       )
         event.preventDefault();
-
-      // this.currentTab = e;
 
       // close navigation
       if (this.#btnMobileNav) {
@@ -69,5 +81,6 @@ export default class View {
     this.parentElement.insertAdjacentHTML("afterbegin", markup);
 
     this.setActiveTab();
+    this.setNavTabActive();
   }
 }

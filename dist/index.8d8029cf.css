@@ -424,7 +424,7 @@ h1 {
     padding-right: 1rem;
   }
 
-  .primary-nav .nav__item.active, .primary-nav .nav__item[aria-selected="true"] {
+  .primary-nav .nav__item[aria-selected="true"] {
     border-right: .2rem solid hsl(var(--clr-white) / 1);
   }
 }
@@ -475,7 +475,7 @@ h1 {
   --border-opacity: .5;
 }
 
-.nav__item.active, .nav__item[aria-selected="true"] {
+.nav__item[aria-selected="true"] {
   --border-opacity: 1;
 }
 

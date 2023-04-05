@@ -44,7 +44,7 @@
       border-right: 0.2rem solid hsl(var(--clr-white) / 0.5);
     }
 
-    .nav__item.active,
+    // .nav__item.active,
     .nav__item[aria-selected='true'] {
       border-right: 0.2rem solid hsl(var(--clr-white) / 1);
     }
@@ -100,7 +100,7 @@
     --border-opacity: 0.5;
   }
 
-  &__item.active,
+  // &__item.active,
   &__item[aria-selected='true'] {
     --border-opacity: 1;
   }
