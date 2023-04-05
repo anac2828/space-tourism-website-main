@@ -6,6 +6,7 @@ export default class View {
   navListPrimary = document.querySelector(".primary-nav");
   data;
   currentTab;
+  currentTabName = localStorage.getItem("main-nav-tab");
   clickedTab;
   tabId = localStorage.getItem("current-tab");
 
@@ -27,21 +28,22 @@ export default class View {
   }
 
   #clickedNavHandler() {
-    // SET CURRENT TAB TO ACTIVE STYLE
-    this.currentTab = localStorage.getItem("main-nav-tab");
+    this.currentTab = this.navListPrimary.querySelector(
+      `#${this.currentTabName.slice(2).toLowerCase()}`
+    );
 
-    for (const tab of this.navListPrimary.children) {
-      if (tab.textContent.trim() === this.currentTab) {
-        tab.classList.add("active");
-      }
-    }
+    console.log(this.currentTabName, this.currentTab);
+
+    // this.currentTab.classList.toggle("active");
+    // for (const tab of this.navListPrimary.children) {
+    //   if (tab.textContent.trim() === this.currentTab) {
+    //     tab.classList.add("active");
+    //   }
+    // }
     this.navListPrimary.addEventListener("click", event => {
       // to prevent propagation
       const e = event.target.closest(".nav__item");
       if (e === null) return;
-
-      // SET CLICKED TAB TO ACTIVE STYLE
-      e.classList.add("active");
 
       // SAVE TAB TO LOCAL STORAGE
       localStorage.setItem("main-nav-tab", e.textContent.trim());
@@ -53,7 +55,7 @@ export default class View {
       )
         event.preventDefault();
 
-      this.currentTab = e.children[0];
+      // this.currentTab = e;
 
       // close navigation
       if (this.#btnMobileNav) {

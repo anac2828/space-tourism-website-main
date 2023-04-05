@@ -5,6 +5,7 @@ import europa from '../../assets/destination/image-europa.png';
 import titan from '../../assets/destination/image-titan.png';
 
 class Destination extends View {
+  #tabId = localStorage.getItem("current-tab");
   #images = { moon, mars, europa, titan };
   #destinationTab = this.navListPrimary.querySelector("#destination");
 
@@ -60,51 +61,49 @@ class Destination extends View {
   setActiveTab() {
     // get the element of the tab id
     const nav = this.parentElement.querySelector(".secondary-nav");
-    this.clickedTab = nav.querySelector(`#${this.tabId}`);
+    this.clickedTab = nav.querySelector(`#${this.#tabId}`);
 
     // set active style of tab
     this.clickedTab.setAttribute("aria-selected", "true");
   }
 
   addHandlerSlidesNav(handler) {
-    if (!this.parentElement) return;
+    if (!this.parentElement || !this.clickedTab) return;
 
+    // EVENT LISTENER
     this.parentElement.addEventListener("click", e => {
       if (e.target.tagName != "BUTTON") return;
+
       // Get the element of the clicked tab
       this.clickedTab = e.target.closest(".nav__item");
-
+      if (!this.clickedTab) return;
       // Get the name of the tab
-      this.tabId = this.clickedTab.id;
+      this.#tabId = this.clickedTab.id;
 
       // Save tab name to local storage
-      localStorage.setItem("current-tab", this.tabId);
+      localStorage.setItem("current-tab", this.#tabId);
 
       //Handler will load data of the clicked tab
-      handler(this.#destinationTab.id, this.tabId);
+      handler(this.#destinationTab.id, this.#tabId);
     });
   }
 
   destinationTab(handler) {
     // Make the first tab active
-    // if (
-    //   this.currentTab === "00Home" ||
-    //   this.currentTab === "01Destination"
-    // ) {
-    //   localStorage.setItem("current-tab", "Moon");
-    // }
+    if (this.currentTabName === "00Home")
+      localStorage.setItem("current-tab", "Moon");
 
     if (!this.#destinationTab) return;
 
     // LISTENERS ************
-    if (this.currentTab === "01Destination")
+    if (this.currentTabName === "01Destination")
       window.addEventListener(
         "click",
-        handler(this.#destinationTab.id, this.tabId)
+        handler(this.#destinationTab.id, this.#tabId)
       );
 
     this.#destinationTab.addEventListener("click", () => {
-      handler(this.#destinationTab.id, this.tabId);
+      handler(this.#destinationTab.id, this.#tabId);
     });
   }
 }
