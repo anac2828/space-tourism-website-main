@@ -5,9 +5,9 @@ import europa from '../../assets/destination/image-europa.png';
 import titan from '../../assets/destination/image-titan.png';
 
 class Destination extends View {
-  #tabId = localStorage.getItem("current-tab");
+  #tabId = localStorage.getItem('current-tab');
   #images = { moon, mars, europa, titan };
-  #destinationTab = this.navListPrimary.querySelector("#destination");
+  #destinationTab = this.navListPrimary.querySelector('#destination');
   #clickedTab;
 
   generateMarkup() {
@@ -33,26 +33,18 @@ class Destination extends View {
       </nav>
 
       <div class="discription">
-        <h2 class="heading heading--primary">${
-          this.data.tabContent.name
-        }</h2>
+        <h2 class="heading heading--primary">${this.data.tabContent.name}</h2>
 
-        <p class="description__text">${
-          this.data.tabContent.description
-        }</p>
+        <p class="description__text">${this.data.tabContent.description}</p>
 
         <div class="description__more-info">
           <div>
           <p class="heading heading--secondary-subhead">Avg. Distance</p>
-          <p class="heading heading--primary-subhead">${
-            this.data.tabContent.distance
-          }</p>
+          <p class="heading heading--primary-subhead">${this.data.tabContent.distance}</p>
           </div>
           <div>
           <p class="heading heading--secondary-subhead">Est. Travel Time</p>
-          <p class="heading heading--primary-subhead">${
-            this.data.tabContent.travel
-          }</p>
+          <p class="heading heading--primary-subhead">${this.data.tabContent.travel}</p>
           </div>
         </div>
       </div>
@@ -61,34 +53,29 @@ class Destination extends View {
 
   setActiveTab() {
     // get the element of the tab id
-    const nav = this.parentElement.querySelector(".secondary-nav");
+    const nav = this.parentElement.querySelector('.secondary-nav');
 
-    this.#clickedTab = nav.querySelector(`#${this.#tabId}`);
+    this.#clickedTab = nav.querySelector(`#${this.#tabId.split(' ').join('-')}`);
 
     // set active style of tab
-    this.#clickedTab.setAttribute("aria-selected", "true");
+    this.#clickedTab.setAttribute('aria-selected', 'true');
   }
 
   addHandlerSlidesNav(handler) {
-
     if (!this.parentElement) return;
 
     // EVENT LISTENER
-    this.parentElement.addEventListener("click", e => {
-      if (
-        e.target.tagName != "BUTTON" ||
-        this.currentTabName != "01Destination"
-      )
-        return;
+    this.parentElement.addEventListener('click', e => {
+      if (e.target.tagName != 'BUTTON' || this.currentTabName != '01Destination') return;
 
       // Get the element of the clicked tab
-      this.#clickedTab = e.target.closest(".nav__item");
+      this.#clickedTab = e.target.closest('.nav__item');
 
       // Get the name of the tab
       this.#tabId = this.#clickedTab.id;
 
       // Save tab name to local storage
-      localStorage.setItem("current-tab", this.#tabId);
+      localStorage.setItem('current-tab', this.#tabId);
 
       //Handler will load data of the clicked tab
       handler(this.#destinationTab.id, this.#tabId);
@@ -97,19 +84,20 @@ class Destination extends View {
 
   destinationTab(handler) {
     // Make the first tab active
-    if (this.currentTabName != "01Destination")
-      localStorage.setItem("current-tab", "Moon");
+    if (this.currentTabName != '01Destination')
+      localStorage.setItem('current-tab', 'Moon');
 
     if (!this.#destinationTab) return;
 
     // LISTENERS ************
-    if (this.currentTabName === "01Destination")
-      window.addEventListener(
-        "click",
-        handler(this.#destinationTab.id, this.#tabId)
-      );
+    if (this.currentTabName === '01Destination')
+      window.addEventListener('click', handler(this.#destinationTab.id, this.#tabId));
 
-    this.#destinationTab.addEventListener("click", () => {
+    this.#destinationTab.addEventListener('click', () => {
+      if (this.currentTabName != '01Destination') {
+        this.#tabId = 'Moon';
+      }
+
       handler(this.#destinationTab.id, this.#tabId);
     });
   }

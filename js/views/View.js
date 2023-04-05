@@ -40,25 +40,23 @@ export default class View {
       this.currentTab.setAttribute('aria-selected', 'false');
       // to prevent propagation
       const e = event.target.closest('.nav__item');
-      // this.currentTab = e;
-
-      // this.currentTab.setAttribute('aria-selected', 'true');
 
       if (e === null) return;
 
       this.currentTabName = e.textContent.trim();
-      // this.currentTab.setAttribute("aria-selected", "false");
+
       // SAVE TAB TO LOCAL STORAGE
       localStorage.setItem('main-nav-tab', this.currentTabName);
 
+      // set the clicked tab to active
       this.setNavTabActive();
 
       // prevent from page reloading
-      if (
-        e.children[0].textContent != '00Home' &&
-        window.location.pathname === '/pages/page.html'
-      )
-        event.preventDefault();
+      // if (
+      //   e.children[0].textContent != '00Home' &&
+      //   window.location.pathname === '/pages/page.html'
+      // )
+      //   event.preventDefault();
 
       // close navigation
       if (this.#btnMobileNav) {
@@ -73,7 +71,7 @@ export default class View {
     this.data = data;
     this.parentElement.innerHTML = '';
 
-    if (!this.parentElement) return;
+    // if (!this.parentElement) return;
     // markup from the child class
     const markup = this.generateMarkup();
     // insert markup into DOM
@@ -81,6 +79,5 @@ export default class View {
     this.parentElement.insertAdjacentHTML('afterbegin', markup);
 
     this.setActiveTab();
-    this.setNavTabActive();
   }
 }

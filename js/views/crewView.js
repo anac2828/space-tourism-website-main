@@ -3,10 +3,10 @@ import hurley from '../../assets/crew/image-douglas-hurley.png';
 
 class Crew extends View {
   #tabId =
-    localStorage.getItem("current-crew-tab") === null
-      ? "Douglas Hurley"
-      : localStorage.getItem("current-crew-tab");
-  #crewTab = this.navListPrimary.querySelector("#crew");
+    localStorage.getItem('current-crew-tab') === null
+      ? 'Douglas Hurley'
+      : localStorage.getItem('current-crew-tab');
+  #crewTab = this.navListPrimary.querySelector('#crew');
   #clickedTab;
 
   generateMarkup() {
@@ -42,32 +42,27 @@ class Crew extends View {
   }
 
   setActiveTab() {
-    const nav = this.parentElement.querySelector(".nav-btns");
-    this.#clickedTab = nav.querySelector(
-      `#${this.#tabId.split(" ").join("-")}`
-    );
+    const nav = this.parentElement.querySelector('.nav-btns');
 
-    this.#clickedTab.setAttribute("aria-selected", "true");
+    this.#clickedTab = nav.querySelector(`#${this.#tabId.split(' ').join('-')}`);
+
+    this.#clickedTab.setAttribute('aria-selected', 'true');
   }
 
   addHandlerDotsNav(handler) {
     if (!this.parentElement) return;
 
     // EVENT LISTENER
-    this.parentElement.addEventListener("click", e => {
-      if (
-        e.target.tagName != "BUTTON" ||
-        this.currentTabName != "02Crew"
-      )
-        return;
+    this.parentElement.addEventListener('click', e => {
+      if (e.target.tagName != 'BUTTON' || this.currentTabName != '02Crew') return;
       // Get the element of the clicked tab
-      this.#clickedTab = e.target.closest(".btn__dot");
+      this.#clickedTab = e.target.closest('.btn__dot');
 
       // Get the name of the tab
-      this.#tabId = this.#clickedTab.id.split("-").join(" ");
+      this.#tabId = this.#clickedTab.id.split('-').join(' ');
 
       // Save tab name to local storage
-      localStorage.setItem("current-crew-tab", this.#tabId);
+      localStorage.setItem('current-crew-tab', this.#tabId);
 
       //Handler will load data of the clicked tab
       handler(this.#crewTab.id, this.#tabId);
@@ -76,19 +71,20 @@ class Crew extends View {
 
   crewTab(handler) {
     // Make the first tab active
-    if (this.currentTabName != "02Crew")
-      localStorage.setItem("current-crew-tab", "Douglas Hurley");
+    if (this.currentTabName != '02Crew')
+      localStorage.setItem('current-crew-tab', 'Douglas Hurley');
 
     if (!this.#crewTab) return;
 
     // LISTENERS ************
-    if (this.currentTabName === "02Crew")
-      window.addEventListener(
-        "click",
-        handler(this.#crewTab.id, this.#tabId)
-      );
+    if (this.currentTabName === '02Crew')
+      window.addEventListener('click', handler(this.#crewTab.id, this.#tabId));
 
-    this.#crewTab.addEventListener("click", () => {
+    this.#crewTab.addEventListener('click', () => {
+      if (this.currentTabName != '02Crew') {
+        this.#tabId = 'Douglas Hurley';
+      }
+
       handler(this.#crewTab.id, this.#tabId);
     });
   }
