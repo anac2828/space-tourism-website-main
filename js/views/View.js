@@ -7,7 +7,6 @@ export default class View {
   data;
   currentTab;
   currentTabName = localStorage.getItem("main-nav-tab");
-  clickedTab;
   tabId = localStorage.getItem("current-tab");
 
   constructor() {
@@ -32,14 +31,6 @@ export default class View {
       `#${this.currentTabName.slice(2).toLowerCase()}`
     );
 
-    console.log(this.currentTabName, this.currentTab);
-
-    // this.currentTab.classList.toggle("active");
-    // for (const tab of this.navListPrimary.children) {
-    //   if (tab.textContent.trim() === this.currentTab) {
-    //     tab.classList.add("active");
-    //   }
-    // }
     this.navListPrimary.addEventListener("click", event => {
       // to prevent propagation
       const e = event.target.closest(".nav__item");

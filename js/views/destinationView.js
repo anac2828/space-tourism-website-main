@@ -8,6 +8,7 @@ class Destination extends View {
   #tabId = localStorage.getItem("current-tab");
   #images = { moon, mars, europa, titan };
   #destinationTab = this.navListPrimary.querySelector("#destination");
+  #clickedTab;
 
   generateMarkup() {
     if (!this.data) return;
@@ -61,24 +62,30 @@ class Destination extends View {
   setActiveTab() {
     // get the element of the tab id
     const nav = this.parentElement.querySelector(".secondary-nav");
-    this.clickedTab = nav.querySelector(`#${this.#tabId}`);
+
+    this.#clickedTab = nav.querySelector(`#${this.#tabId}`);
 
     // set active style of tab
-    this.clickedTab.setAttribute("aria-selected", "true");
+    this.#clickedTab.setAttribute("aria-selected", "true");
   }
 
   addHandlerSlidesNav(handler) {
-    if (!this.parentElement || !this.clickedTab) return;
+    if (!this.parentElement || !this.#clickedTab) return;
 
     // EVENT LISTENER
     this.parentElement.addEventListener("click", e => {
-      if (e.target.tagName != "BUTTON") return;
+      console.log(this.currentTabName);
+      if (
+        e.target.tagName != "BUTTON" ||
+        this.currentTabName != "01Destination"
+      )
+        return;
 
       // Get the element of the clicked tab
-      this.clickedTab = e.target.closest(".nav__item");
-      if (!this.clickedTab) return;
+      this.#clickedTab = e.target.closest(".nav__item");
+
       // Get the name of the tab
-      this.#tabId = this.clickedTab.id;
+      this.#tabId = this.#clickedTab.id;
 
       // Save tab name to local storage
       localStorage.setItem("current-tab", this.#tabId);

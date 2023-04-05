@@ -7,6 +7,8 @@ class Crew extends View {
       ? "Douglas-Hurley"
       : localStorage.getItem("current-crew-tab");
   #crewTab = this.navListPrimary.querySelector("#crew");
+  #clickedTab;
+
   generateMarkup() {
     return `
     <div class="main__left-container">
@@ -41,24 +43,24 @@ class Crew extends View {
 
   setActiveTab() {
     const nav = this.parentElement.querySelector(".nav-btns");
-    this.clickedTab = nav.querySelector(`#${this.#tabId}`);
-    console.log(this.#tabId, this.clickedTab);
+    this.#clickedTab = nav.querySelector(`#${this.#tabId}`);
 
-    this.clickedTab.setAttribute("aria-selected", "true");
+    this.#clickedTab.setAttribute("aria-selected", "true");
   }
 
   addHandlerDotsNav(handler) {
-    if (!this.parentElement || !this.clickedTab) return;
+    if (!this.parentElement || !this.#clickedTab) return;
 
     // EVENT LISTENER
     this.parentElement.addEventListener("click", e => {
+      console.log(this.currentTabName);
       if (e.target.tagName != "BUTTON") return;
       // Get the element of the clicked tab
-      this.clickedTab = e.target.closest(".btn__dot");
+      this.#clickedTab = e.target.closest(".btn__dot");
 
-      if (!this.clickedTab) return;
+      if (!this.#clickedTab) return;
       // Get the name of the tab
-      this.#tabId = this.clickedTab.id;
+      this.#tabId = this.#clickedTab.id;
 
       // Save tab name to local storage
       localStorage.setItem("current-crew-tab", this.#tabId);

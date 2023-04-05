@@ -7,6 +7,8 @@ class Technology extends View {
       ? "Launch-vehicle"
       : localStorage.getItem("current-tech-tab");
   #techTab = this.navListPrimary.querySelector("#technology");
+  #clickedTab;
+
   generateMarkup() {
     return `
     <div class="main__left-container">
@@ -38,23 +40,23 @@ class Technology extends View {
       ".number-indicators"
     );
 
-    this.clickedTab = nav.querySelector(`#${this.#tabId}`);
+    this.#clickedTab = nav.querySelector(`#${this.#tabId}`);
 
-    this.clickedTab.setAttribute("aria-selected", "true");
+    this.#clickedTab.setAttribute("aria-selected", "true");
   }
 
   addHandlerNumbsNav(handler) {
-    if (!this.parentElement || !this.clickedTab) return;
+    if (!this.parentElement || !this.#clickedTab) return;
 
     // EVENT LISTENER
     this.parentElement.addEventListener("click", e => {
       if (e.target.tagName != "BUTTON") return;
 
       // Get the element of the clicked tab
-      this.clickedTab = e.target.closest(".btn--small");
-      if (!this.clickedTab) return;
+      this.#clickedTab = e.target.closest(".btn--small");
+      // if (!this.#clickedTab) return;
       // Get the name of the tab
-      this.#tabId = this.clickedTab.id;
+      this.#tabId = this.#clickedTab.id;
 
       // Save tab name to local storage
       localStorage.setItem("current-tech-tab", this.#tabId);
