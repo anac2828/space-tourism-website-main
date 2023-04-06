@@ -79,5 +79,6 @@ export default class View {
     this.parentElement.insertAdjacentHTML('afterbegin', markup);
 
     this.setActiveTab();
+    this.setNavTabActive();
   }
 }
