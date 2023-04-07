@@ -597,6 +597,10 @@ h1 {
   translate: 0;
 }
 
+.grid-container--destination img {
+  max-width: 60%;
+}
+
 .grid-container {
   text-align: center;
   place-items: center;

@@ -13,15 +13,15 @@ class Destination extends View {
   generateMarkup() {
     if (!this.data) return;
     return `
-    <article class="main__left-container">
+    <article class="left-container">
         <h1 class="numbered-title" id="main-heading">
           <span aria-hidden="true">01</span> Pick Your Destination
         </h1>
-        <div class="main__left-content">
+        
           <img class="page-img" src="${
             this.#images[this.data.tabContent.name.toLowerCase()]
           }" alt="" />
-        </div>
+        
     </article>
 
     <article class="main__right-content">
@@ -33,13 +33,9 @@ class Destination extends View {
       </nav>
 
       <div class="description">
-        <h2 class="heading heading--secondary">${
-          this.data.tabContent.name
-        }</h2>
+        <h2 class="heading heading--secondary">${this.data.tabContent.name}</h2>
 
-        <p class="description__text">${
-          this.data.tabContent.description
-        }</p>
+        <p class="description__text">${this.data.tabContent.description}</p>
 
         <div class="flex">
             <div class="description__distance">
@@ -60,14 +56,12 @@ class Destination extends View {
 
   setActiveTab() {
     // get the element of the tab id
-    const nav = this.parentElement.querySelector(".secondary-nav");
+    const nav = this.parentElement.querySelector('.secondary-nav');
 
-    this.#clickedTab = nav.querySelector(
-      `#${this.#tabId.split(" ").join("-")}`
-    );
+    this.#clickedTab = nav.querySelector(`#${this.#tabId.split(' ').join('-')}`);
 
     // set active style of tab
-    this.#clickedTab.setAttribute("aria-selected", "true");
+    this.#clickedTab.setAttribute('aria-selected', 'true');
   }
 
   addHandlerSlidesNav(handler) {
@@ -93,22 +87,19 @@ class Destination extends View {
 
   destinationTab(handler) {
     // Make the first tab active
-    if (this.currentTabName != "01Destination")
-      localStorage.setItem("current-tab", "Moon");
+    if (this.currentTabName != '01Destination')
+      localStorage.setItem('current-tab', 'Moon');
 
     if (!this.#destinationTab) return;
 
     // LISTENERS ************
-    if (this.currentTabName === "01Destination") {
-      window.addEventListener(
-        "load",
-        handler(this.#destinationTab.id, this.#tabId)
-      );
+    if (this.currentTabName === '01Destination') {
+      window.addEventListener('load', handler(this.#destinationTab.id, this.#tabId));
     }
 
-    this.#destinationTab.addEventListener("click", () => {
-      if (this.currentTabName != "01Destination") {
-        this.#tabId = "Moon";
+    this.#destinationTab.addEventListener('click', () => {
+      if (this.currentTabName != '01Destination') {
+        this.#tabId = 'Moon';
       }
 
       handler(this.#destinationTab.id, this.#tabId);
