@@ -5,7 +5,8 @@
   text-align: center;
   padding-inline: 1rem;
 
-  & .left__content {
+  & .left-container img {
+    display: inline-block;
   }
 
   @include mediaDesktop {

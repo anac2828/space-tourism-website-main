@@ -609,6 +609,10 @@ h1 {
   display: grid;
 }
 
+.grid-container .left-container img {
+  display: inline-block;
+}
+
 @media (min-width: 56.25em) {
   .grid-container {
     text-align: left;
