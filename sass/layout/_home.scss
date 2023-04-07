@@ -12,6 +12,7 @@
 
   @include mediaDesktop {
     padding-right: 0;
+    padding-left: 4rem;
 
     &::before {
       order: 2;

@@ -13,18 +13,18 @@ class Destination extends View {
   generateMarkup() {
     if (!this.data) return;
     return `
-    <div class="main__left-container">
+    <article class="main__left-container">
         <h1 class="numbered-title" id="main-heading">
-          <span>01</span> Pick Your Destination
+          <span aria-hidden="true">01</span> Pick Your Destination
         </h1>
         <div class="main__left-content">
           <img class="page-img" src="${
             this.#images[this.data.tabContent.name.toLowerCase()]
           }" alt="" />
         </div>
-    </div>
+    </article>
 
-    <div class="main__right-content">
+    <article class="main__right-content">
       <nav class="nav nav__list secondary-nav">
         <button aria-selected="false" class="nav__item" id="Moon">Moon</button>
         <button aria-selected="false" class="nav__item" id="Mars">Mars</button>
@@ -32,23 +32,30 @@ class Destination extends View {
         <button aria-selected="false" class="nav__item" id="Titan">Titan</button>
       </nav>
 
-      <div class="discription">
-        <h2 class="heading heading--primary">${this.data.tabContent.name}</h2>
+      <div class="description">
+        <h2 class="heading heading--secondary">${
+          this.data.tabContent.name
+        }</h2>
 
-        <p class="description__text">${this.data.tabContent.description}</p>
+        <p class="description__text">${
+          this.data.tabContent.description
+        }</p>
 
-        <div class="description__more-info">
-          <div>
-          <p class="heading heading--secondary-subhead">Avg. Distance</p>
-          <p class="heading heading--primary-subhead">${this.data.tabContent.distance}</p>
-          </div>
-          <div>
-          <p class="heading heading--secondary-subhead">Est. Travel Time</p>
-          <p class="heading heading--primary-subhead">${this.data.tabContent.travel}</p>
-          </div>
+        <div class="flex">
+            <div class="description__distance">
+                <p class="heading heading--secondary-subhead">Avg. Distance</p>
+                <p class="heading heading--primary-subhead">${
+                  this.data.tabContent.distance
+                }</p>
+            </div>
+            <div class="description__travel-time">
+                <p class="heading heading--secondary-subhead">Est. Travel Time</p>
+                <p class="heading heading--primary-subhead">${
+                  this.data.tabContent.travel
+                }</p>
+            </div>
         </div>
-      </div>
-    </div>`;
+    </article>`;
   }
 
   setActiveTab() {
@@ -59,6 +66,8 @@ class Destination extends View {
 
     // set active style of tab
     this.#clickedTab.setAttribute('aria-selected', 'true');
+
+    this.parentElement.id = "destination";
   }
 
   addHandlerSlidesNav(handler) {

@@ -26,7 +26,7 @@ class Technology extends View {
           </div>
           
           <div>
-            <p class="">THE TERMINOLOGY…</p>
+            <p class="heading--secondary heading--secondary-subhead">THE TERMINOLOGY…</p>
             <h2 class="heading heading--tertiary">${
               this.data.tabContent.name
             }</h2>

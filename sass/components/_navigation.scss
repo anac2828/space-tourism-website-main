@@ -1,5 +1,5 @@
 .primary-nav {
-  --font-size: var(--fs-400);
+  // font-size applied to numbered-titled class
   backdrop-filter: blur(20px);
   background-color: hsl(var(--clr-white) / 0.1);
 
@@ -27,7 +27,7 @@
   // MOBILE NAV STYLES
   // 608px
   @media (max-width: 38em) {
-    --nav-gap: 2.5rem;
+    --nav-gap: 2rem;
     --nav-item-padding: 0;
     --nav-item-border: 0;
     position: fixed;
@@ -36,26 +36,27 @@
     transition: translate 0.2s ease-in;
     flex-direction: column;
     // will chose the smaller of the two
-    padding: min(8rem, 20vh) 4rem;
+    padding: min(8rem, 20vh) 2rem min(8rem, 20vh) 4rem;
 
     .nav__item:hover,
     .nav__item:focus {
       padding-right: 1rem;
-      border-right: 0.2rem solid hsl(var(--clr-white) / 0.5);
+      border-right: 4px solid hsl(var(--clr-white) / 0.5);
     }
 
-    // .nav__item.active,
+    
     .nav__item[aria-selected='true'] {
-      border-right: 0.2rem solid hsl(var(--clr-white) / 1);
+      border-right: 4px solid hsl(var(--clr-white) / 1);
     }
   }
 }
 
 // smaller bottom padding and accent color
 .secondary-nav {
-  --nav-gap: 2rem;
-  --nav-item-padding: 0.5rem;
-  justify-content: space-between;
+  --nav-gap: 1.625rem;
+  --nav-item-padding: 0.75rem;
+  
+  font-size: var(--fs-100);
 
   .nav__item {
     cursor: pointer;
@@ -63,36 +64,37 @@
     background-color: transparent;
     border: 0;
 
-    &[aria-selected='true'] {
+    &[aria-selected="true"]{
       color: hsl(var(--clr-white));
-      border-bottom: 0.2rem solid hsl(var(--clr-white) / var(--border-opacity, 1));
+      border-bottom: 3px solid hsl(var(--clr-white));
     }
   }
 
-  @include mediaMobile {
-    translate: 0;
+  @include mediaTabletMin{
+    --nav-gap: 2.25rem;
+    font-size: var(--fs-300);
   }
 }
 
 // nav styles applicable to both primary and secondary navs
 .nav {
+  --span-numb-margin: .75rem;
   font-family: var(--ff-sans-cond);
 
+  // UL
   &__list {
     list-style: none;
     display: flex;
     gap: var(--nav-gap, 3rem);
     margin: 0;
   }
-
+// li
   &__item {
     letter-spacing: 2.7px;
     text-transform: uppercase;
-    padding-bottom: var(--nav-item-padding, 2rem);
-    border-bottom: var(
-      --nav-item-border,
-      0.2rem solid hsl(var(--clr-white) / var(--border-opacity, 0))
-    );
+    padding-bottom: var(--nav-item-padding, 2.25rem);
+    border-bottom: var(--nav-item-border, 3px solid hsl(var(--clr-white) / var(--border-opacity, 0)));
+    transition: border .3s;
   }
 
   &__item:hover,
@@ -100,16 +102,21 @@
     --border-opacity: 0.5;
   }
 
-  // &__item.active,
+  
   &__item[aria-selected='true'] {
     --border-opacity: 1;
   }
 
   &__link {
+    --font-size: var(--fs-300);
     text-decoration: none;
     color: hsl(var(--clr-white));
     transition: all 0.2s;
     --span-color: hsl(var(--clr-white));
+
+    @include mediaTablet{
+      --font-size: var(--fs-100)
+    }
   }
 
   @media (max-width: 38em) {

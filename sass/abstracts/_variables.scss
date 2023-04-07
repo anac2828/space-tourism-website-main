@@ -8,14 +8,18 @@ $clr-white: 0 0% 100%;
   --clr-white: #{$clr-white};
 
   /* font-sizes */
-  --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
-  --fs-800: 6.25rem;
-  --fs-700: 3.5rem;
-  --fs-600: 2rem;
-  --fs-500: 1.75rem;
-  --fs-400: 1.125rem;
-  --fs-300: 1rem;
-  --fs-200: 0.875rem;
+  --fs-900: 9.375rem;
+  --fs-850: 6.25rem; /* 100px */
+  --fs-800: 5rem; /* 80px */
+  --fs-700: 3.5rem; /* 56px */
+  --fs-650: 2.5rem; /* 40px */
+  --fs-600: 2rem; /* 32px */
+  --fs-550: 1.75rem; /* 28px */
+  --fs-525: 1.5rem; /* 24px */
+  --fs-500: 1.25rem; /* 20px */
+  --fs-400: 1.125rem; /* 18px */
+  --fs-300: 1rem; /* 16px */
+  --fs-100: 0.875rem; /* 14px */
 
   /* font-families */
   --ff-serif: 'Bellefair', serif;
@@ -26,25 +30,4 @@ $clr-white: 0 0% 100%;
 
   --media-100: 38em;
   --media-200: 56.25em;
-}
-
-// 560px
-@media (min-width: 38em) {
-  :root {
-    --fs-800: 5rem;
-    --fs-700: 2.5rem;
-    --fs-600: 1.5rem;
-    --fs-400: 1rem;
-  }
-}
-
-// 720px
-@media (min-width: 56.25em) {
-  :root {
-    /* font-sizes */
-    --fs-800: 6.25rem;
-    --fs-700: 3.5rem;
-    --fs-600: 2rem;
-    --fs-400: 1.125rem;
-  }
 }
