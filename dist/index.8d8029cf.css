@@ -245,35 +245,6 @@ h1 {
   padding-inline: 2rem;
 }
 
-.grid-container {
-  text-align: center;
-  place-items: center;
-  gap: 2rem;
-  padding-inline: 1rem;
-  display: grid;
-}
-
-@media (min-width: 56.25em) {
-  .grid-container {
-    text-align: left;
-    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
-  }
-
-  .grid-container > :first-child {
-    grid-column: 2;
-  }
-
-  .grid-container > :last-child {
-    grid-column: 3;
-    place-self: end;
-  }
-
-  .grid-container--home {
-    align-self: end;
-    padding-bottom: max(6rem, 20vh);
-  }
-}
-
 .sr-only {
   width: 1px;
   height: 1px;
@@ -523,6 +494,13 @@ h1 {
   --nav-gap: 1.625rem;
   --nav-item-padding: .75rem;
   font-size: var(--fs-100);
+  justify-content: center;
+}
+
+@media (min-width: 56.25em) {
+  .secondary-nav {
+    justify-content: start;
+  }
 }
 
 .secondary-nav .nav__item {
@@ -617,6 +595,32 @@ h1 {
 
 .mobile-nav-toggle + .nav[data-visible="true"] .nav__list {
   translate: 0;
+}
+
+.grid-container {
+  text-align: center;
+  place-items: center;
+  gap: 2rem;
+  padding-inline: 1rem;
+  display: grid;
+}
+
+@media (min-width: 56.25em) {
+  .grid-container {
+    text-align: left;
+    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
+    align-self: end;
+    padding-bottom: max(6rem, 20vh);
+  }
+
+  .grid-container > :first-child {
+    grid-column: 2;
+  }
+
+  .grid-container > :last-child {
+    grid-column: 3;
+    place-self: end;
+  }
 }
 
 .header-primary {

@@ -60,14 +60,14 @@ class Destination extends View {
 
   setActiveTab() {
     // get the element of the tab id
-    const nav = this.parentElement.querySelector('.secondary-nav');
+    const nav = this.parentElement.querySelector(".secondary-nav");
 
-    this.#clickedTab = nav.querySelector(`#${this.#tabId.split(' ').join('-')}`);
+    this.#clickedTab = nav.querySelector(
+      `#${this.#tabId.split(" ").join("-")}`
+    );
 
     // set active style of tab
-    this.#clickedTab.setAttribute('aria-selected', 'true');
-
-    this.parentElement.id = "destination";
+    this.#clickedTab.setAttribute("aria-selected", "true");
   }
 
   addHandlerSlidesNav(handler) {
@@ -93,18 +93,22 @@ class Destination extends View {
 
   destinationTab(handler) {
     // Make the first tab active
-    if (this.currentTabName != '01Destination')
-      localStorage.setItem('current-tab', 'Moon');
+    if (this.currentTabName != "01Destination")
+      localStorage.setItem("current-tab", "Moon");
 
     if (!this.#destinationTab) return;
 
     // LISTENERS ************
-    if (this.currentTabName === '01Destination')
-      window.addEventListener('click', handler(this.#destinationTab.id, this.#tabId));
+    if (this.currentTabName === "01Destination") {
+      window.addEventListener(
+        "load",
+        handler(this.#destinationTab.id, this.#tabId)
+      );
+    }
 
-    this.#destinationTab.addEventListener('click', () => {
-      if (this.currentTabName != '01Destination') {
-        this.#tabId = 'Moon';
+    this.#destinationTab.addEventListener("click", () => {
+      if (this.currentTabName != "01Destination") {
+        this.#tabId = "Moon";
       }
 
       handler(this.#destinationTab.id, this.#tabId);

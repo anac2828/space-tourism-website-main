@@ -28,40 +28,47 @@ export default class View {
 
   setNavTabActive() {
     this.currentTab = this.navListPrimary.querySelector(
-      `#${this.currentTabName.slice(2).toLowerCase()}`
+      `#${this.currentTabName.slice(2).toLocaleLowerCase()}`
     );
 
     if (!this.currentTab) return;
-    this.currentTab.setAttribute('aria-selected', 'true');
+    this.currentTab.setAttribute("aria-selected", "true");
+
+    this.parentElement.classList.add(
+      `grid-container--${this.currentTabName
+        .slice(2)
+        .toLocaleLowerCase()}`
+    );
   }
 
   #clickedNavHandler() {
     this.navListPrimary.addEventListener('click', event => {
-      this.currentTab.setAttribute('aria-selected', 'false');
+      if (!this.currentTab) return;
+      this.currentTab.setAttribute("aria-selected", "false");
       // to prevent propagation
-      const e = event.target.closest('.nav__item');
+      const e = event.target.closest(".nav__item");
 
       if (e === null) return;
+
+      // if (!this.parentElement) return;
+      this.parentElement.classList.remove(
+        `grid-container--${this.currentTabName
+          .slice(2)
+          .toLocaleLowerCase()}`
+      );
 
       this.currentTabName = e.textContent.trim();
 
       // SAVE TAB TO LOCAL STORAGE
-      localStorage.setItem('main-nav-tab', this.currentTabName);
+      localStorage.setItem("main-nav-tab", this.currentTabName);
 
       // set the clicked tab to active
       this.setNavTabActive();
 
-      // prevent from page reloading
-      // if (
-      //   e.children[0].textContent != '00Home' &&
-      //   window.location.pathname === '/pages/page.html'
-      // )
-      //   event.preventDefault();
-
       // close navigation
       if (this.#btnMobileNav) {
-        this.#navContainer.setAttribute('data-visible', 'false');
-        this.#btnMobileNav.setAttribute('aria-expanded', 'false');
+        this.#navContainer.setAttribute("data-visible", "false");
+        this.#btnMobileNav.setAttribute("aria-expanded", "false");
       }
     });
   }
