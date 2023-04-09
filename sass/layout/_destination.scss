@@ -1,21 +1,32 @@
 .grid-container--destination {
   & img {
-    max-width: 60%;
+    max-width: 52%;
   }
 
   & .right-content {
     align-self: start;
   }
+}
 
-  .description{
-    border-top: 1px solid hsl(var(--clr-dark-200));
-    margin-top: 3rem;
-    padding-top: 3rem;
-    gap: 3rem;
-    display: grid;
+.description {
+  border-top: 1px solid hsl(var(--clr-dark-200));
+  margin-top: 3rem;
+  padding-top: 3rem;
+  gap: 3rem;
 
-    & div .heading{
-      margin-bottom: .75rem;
-    }
+  // flex
+  justify-content: center;
+  flex-direction: column;
+
+  @include mediaTabletMin {
+    flex-direction: row;
+  }
+
+  @include mediaDesktop {
+    justify-content: start;
+  }
+
+  & div .heading {
+    margin-bottom: 0.75rem;
   }
 }

@@ -3,12 +3,22 @@
   gap: 2rem;
   place-items: center;
   text-align: center;
-  padding-inline: 1rem;
+  padding-inline: 2rem;
   padding-bottom: 3rem;
-  
+
+  & .left-container {
+    width: 100%;
+  }
+
   & .left-container img {
     display: inline-block;
     margin-top: 2rem;
+  }
+
+  .numbered-title {
+    @include mediaTabletMin {
+      text-align: left;
+    }
   }
 
   @include mediaDesktop {
@@ -16,7 +26,10 @@
     grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
 
     align-self: end;
-    padding-bottom: max(6rem, 20vh); /* will help with big screens to prevent text to go to far to the bottom*/
+    padding-bottom: max(
+      6rem,
+      20vh
+    ); /* will help with big screens to prevent text to go to far to the bottom*/
 
     & > *:first-child {
       grid-column: 2;

@@ -1,5 +1,9 @@
 .heading + p {
   max-width: 50ch;
+
+  @include mediaTablet {
+    max-width: 65ch;
+  }
 }
 
 .skip-to-content {

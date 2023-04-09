@@ -32,15 +32,11 @@ class Destination extends View {
         <button aria-selected="false" class="nav__item" id="Titan">Titan</button>
       </nav>
 
-      <h2 class="heading heading--secondary">${
-        this.data.tabContent.name
-      }</h2>
+      <h2 class="heading heading--secondary">${this.data.tabContent.name}</h2>
 
-      <p class="description__text">${
-        this.data.tabContent.description
-      }</p>
+      <p class="description__text">${this.data.tabContent.description}</p>
       
-      <div class="description">
+      <div class="description flex">
         <div class="description__distance">
             <p class="heading heading--secondary-subhead">Avg. Distance</p>
             <p class="heading heading--primary-subhead">${
@@ -49,9 +45,7 @@ class Destination extends View {
         </div>
         <div class="description__travel-time">
             <p class="heading heading--secondary-subhead">Est. Travel Time</p>
-            <p class="heading heading--primary-subhead">${
-              this.data.tabContent.travel
-            }</p>
+            <p class="heading heading--primary-subhead">${this.data.tabContent.travel}</p>
         </div>
     </article>`;
   }
