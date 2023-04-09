@@ -1,10 +1,12 @@
 $clr-dark: 230 35% 7%;
+$clr-dark-2: 231, 15%, 26%;
 $clr-light: 231 77% 90%;
 $clr-white: 0 0% 100%;
 
 :root {
   --clr-light: #{$clr-light};
   --clr-dark: #{$clr-dark};
+  --clr-dark-200: #{$clr-dark-2};
   --clr-white: #{$clr-white};
 
   /* font-sizes */

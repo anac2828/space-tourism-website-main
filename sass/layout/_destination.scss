@@ -2,4 +2,20 @@
   & img {
     max-width: 60%;
   }
+
+  & .right-content {
+    align-self: start;
+  }
+
+  .description{
+    border-top: 1px solid hsl(var(--clr-dark-200));
+    margin-top: 3rem;
+    padding-top: 3rem;
+    gap: 3rem;
+    display: grid;
+
+    & div .heading{
+      margin-bottom: .75rem;
+    }
+  }
 }
