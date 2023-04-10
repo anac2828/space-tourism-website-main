@@ -609,8 +609,21 @@ h1 {
   max-width: 52%;
 }
 
+@media (min-width: 56.25em) {
+  .grid-container--destination img {
+    max-width: 80%;
+    margin-inline: auto;
+  }
+}
+
 .grid-container--destination .right-content {
   align-self: start;
+}
+
+@media (min-width: 56.25em) {
+  .grid-container--destination .right-content {
+    text-align: left;
+  }
 }
 
 .description {
@@ -639,12 +652,29 @@ h1 {
 }
 
 .grid-container {
-  text-align: center;
   padding-inline: 2rem;
+  text-align: center;
   place-items: center;
   gap: 2rem;
   padding-bottom: 3rem;
   display: grid;
+}
+
+@media (min-width: 56.25em) {
+  .grid-container {
+    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
+    align-self: end;
+    padding-bottom: max(6rem, 20vh);
+  }
+
+  .grid-container > :first-child {
+    grid-column: 2;
+  }
+
+  .grid-container > :last-child {
+    grid-column: 3;
+    place-self: end;
+  }
 }
 
 .grid-container .left-container {
@@ -659,24 +689,6 @@ h1 {
 @media (min-width: 38rem) {
   .grid-container .numbered-title {
     text-align: left;
-  }
-}
-
-@media (min-width: 56.25em) {
-  .grid-container {
-    text-align: left;
-    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
-    align-self: end;
-    padding-bottom: max(6rem, 20vh);
-  }
-
-  .grid-container > :first-child {
-    grid-column: 2;
-  }
-
-  .grid-container > :last-child {
-    grid-column: 3;
-    place-self: end;
   }
 }
 

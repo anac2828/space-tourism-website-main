@@ -1,10 +1,20 @@
 .grid-container--destination {
   & img {
     max-width: 52%;
+
+    @include mediaDesktop {
+      max-width: 80%;
+      margin-inline: auto;
+      // text-align: center;
+    }
   }
 
   & .right-content {
     align-self: start;
+
+    @include mediaDesktop {
+      text-align: left;
+    }
   }
 }
 
