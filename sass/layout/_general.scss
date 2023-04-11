@@ -1,20 +1,21 @@
 .grid-container {
   display: grid;
+  grid-template-rows: min-content;
   gap: 2rem;
-  place-items: center;
+  // place-items: center;
   padding-inline: 2rem;
   padding-bottom: 3rem;
   text-align: center;
 
   @include mediaDesktop {
     grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
-
-    align-self: end;
+    align-content: start;
+    
     /* will help with big screens to prevent text to go to far to the bottom*/
     padding-bottom: max(6rem, 20vh);
-
     & > *:first-child {
       grid-column: 2;
+      align-self: start;
     }
 
     & > *:last-child {
@@ -30,6 +31,14 @@
   & .left-container img {
     display: inline-block;
     margin-top: 2rem;
+
+    @include mediaTabletMin{
+      margin-top: 3.75rem;
+    }
+
+    @include mediaDesktop{
+      margin-top: 6rem;
+    }
   }
 
   .numbered-title {

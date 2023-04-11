@@ -1,3 +1,14 @@
+
+.nav-btns{
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+
+  @include mediaDesktop{
+    gap: 1.5rem;
+  }
+}
+
 .btn {
   cursor: pointer;
 
@@ -17,7 +28,11 @@
   // DOTS
   &__dot {
     --background-opacity: 0.2;
-    padding: 0.5rem;
+    padding: .3125rem;
+
+    @include mediaDesktop{
+      padding: 1rem;
+    }
 
     &:hover {
       --background-opacity: 0.5;

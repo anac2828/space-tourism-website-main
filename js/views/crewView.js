@@ -15,11 +15,11 @@ class Crew extends View {
 
   generateMarkup() {
     return `
-    <div class="main__left-container">
-        <h1 class="numbered-title" id="main-heading">
-          <span>02</span> Meet your crew
-        </h1>
-        <div class="main__left-content">
+    <h1 class="numbered-title" id="main-heading">
+      <span>02</span> Meet your crew
+    </h1>
+    <article class="main__left-content">
+        
           <p class="heading heading--quaternary">${
             this.data.tabContent.role
           }</p>
@@ -41,16 +41,16 @@ class Crew extends View {
               <span class="sr-only">Slide title</span>
             </button>
           </div>
-        </div>
-    </div>
+        
+    </article>
 
-    <div class="main__right-content">
+    <article class="main__right-content">
       <img class="page-img" src="${
         this.#images[
           this.data.tabContent.name.split(" ")[0].toLowerCase()
         ]
       }" alt="" />
-    </div>`;
+    </article>`;
   }
 
   setActiveTab() {

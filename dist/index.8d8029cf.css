@@ -211,7 +211,6 @@ h1 {
   letter-spacing: 4.72px;
   text-transform: uppercase;
   color: hsl(var(--clr-white));
-  margin-bottom: 1rem;
 }
 
 .numbered-title span {
@@ -353,6 +352,18 @@ h1 {
   }
 }
 
+.nav-btns {
+  justify-content: center;
+  gap: 1rem;
+  display: flex;
+}
+
+@media (min-width: 56.25em) {
+  .nav-btns {
+    gap: 1.5rem;
+  }
+}
+
 .btn {
   cursor: pointer;
   aspect-ratio: 1;
@@ -368,7 +379,13 @@ h1 {
 
 .btn__dot {
   --background-opacity: .2;
-  padding: .5rem;
+  padding: .3125rem;
+}
+
+@media (min-width: 56.25em) {
+  .btn__dot {
+    padding: 1rem;
+  }
 }
 
 .btn__dot:hover {
@@ -654,7 +671,7 @@ h1 {
 .grid-container {
   padding-inline: 2rem;
   text-align: center;
-  place-items: center;
+  grid-template-rows: min-content;
   gap: 2rem;
   padding-bottom: 3rem;
   display: grid;
@@ -663,12 +680,13 @@ h1 {
 @media (min-width: 56.25em) {
   .grid-container {
     grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
-    align-self: end;
+    align-content: start;
     padding-bottom: max(6rem, 20vh);
   }
 
   .grid-container > :first-child {
     grid-column: 2;
+    align-self: start;
   }
 
   .grid-container > :last-child {
@@ -684,6 +702,18 @@ h1 {
 .grid-container .left-container img {
   margin-top: 2rem;
   display: inline-block;
+}
+
+@media (min-width: 38rem) {
+  .grid-container .left-container img {
+    margin-top: 3.75rem;
+  }
+}
+
+@media (min-width: 56.25em) {
+  .grid-container .left-container img {
+    margin-top: 6rem;
+  }
 }
 
 @media (min-width: 38rem) {
@@ -734,6 +764,7 @@ h1 {
 }
 
 .grid-container--home {
+  align-self: end;
   gap: 5rem;
 }
 
