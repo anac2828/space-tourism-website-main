@@ -18,7 +18,7 @@ class Crew extends View {
     <h1 class="numbered-title" id="main-heading">
       <span>02</span> Meet your crew
     </h1>
-    <article class="main__left-content">
+    <article class="left-content">
         
           <p class="heading heading--quaternary">${
             this.data.tabContent.role
@@ -27,24 +27,22 @@ class Crew extends View {
             this.data.tabContent.name
           }</h2>
           <p>${this.data.tabContent.bio}</p>
-          <div class="dot-indicators nav-btns">
-            <button id="Douglas-Hurley" class="btn btn__dot" aria-selected="false">
-              <span class="sr-only">Slide title</span>
-            </button>
-            <button id="Mark-Shuttleworth" class="btn btn__dot" aria-selected="false">
-              <span class="sr-only">Slide title</span>
-            </button>
-            <button id="Victor-Glover" class="btn btn__dot" aria-selected="false">
-              <span class="sr-only">Slide title</span>
-            </button>
-            <button id="Anousheh-Ansari" class="btn btn__dot" aria-selected="false">
-              <span class="sr-only">Slide title</span>
-            </button>
-          </div>
-        
     </article>
-
-    <article class="main__right-content">
+    <div class="dot-indicators nav-btns">
+      <button id="Douglas-Hurley" class="btn btn__dot" aria-selected="false">
+        <span class="sr-only">Commander</span>
+      </button>
+      <button id="Mark-Shuttleworth" class="btn btn__dot" aria-selected="false">
+        <span class="sr-only">Mission Specialist</span>
+      </button>
+      <button id="Victor-Glover" class="btn btn__dot" aria-selected="false">
+        <span class="sr-only">Pilot</span>
+      </button>
+      <button id="Anousheh-Ansari" class="btn btn__dot" aria-selected="false">
+        <span class="sr-only">Flight Engineer</span>
+      </button>
+    </div>
+    <article class="right-content">
       <img class="page-img" src="${
         this.#images[
           this.data.tabContent.name.split(" ")[0].toLowerCase()

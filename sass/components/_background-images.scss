@@ -1,6 +1,7 @@
 .bg-img {
   background-size: cover;
   background-position: bottom;
+  background-repeat: no-repeat;
 
   &__home {
     background-image: url('../assets/home/background-home-mobile.jpg');
@@ -25,4 +26,18 @@
       background-image: url('../assets/destination/background-destination-desktop.jpg');
     }
   }
+  
+  &__crew{
+    background-image: linear-gradient(to bottom, hsl(var(--clr-dark) / .5), hsl(var(--clr-dark) / .5)), url('../assets/crew/background-crew-mobile.jpg');
+    background-position-y: bottom 13rem;
+
+    @include mediaTablet{
+      background-image: linear-gradient(to bottom, hsl(var(--clr-dark) / .5), hsl(var(--clr-dark) / .5)),  url('../assets/crew/background-crew-tablet.jpg');
+    }
+
+    @include mediaDesktop{
+      background-image: linear-gradient(to bottom, hsl(var(--clr-dark) / .20), hsl(var(--clr-dark) / .5)),  url('../assets/crew/background-crew-desktop.jpg');
+    }
+  }
 }
+

@@ -1,22 +1,18 @@
 .grid-container--destination {
-  & img {
-    max-width: 52%;
+  padding-bottom: 3rem;
+  
+  .page-img{
+    margin-top: 2rem;
+    
+    @include mediaTablet{
+      margin-top: 0;
+    }
 
-    @include mediaDesktop {
-      max-width: 80%;
-      margin-inline: auto;
-      // text-align: center;
+    @include mediaDesktop{
+      margin-top: 6rem;
     }
   }
-
-  & .right-content {
-    align-self: start;
-
-    @include mediaDesktop {
-      text-align: left;
-    }
-  }
-}
+    
 
 .description {
   border-top: 1px solid hsl(var(--clr-dark-200));
@@ -39,4 +35,6 @@
   & div .heading {
     margin-bottom: 0.75rem;
   }
+}
+
 }

@@ -1,0 +1,59 @@
+.grid-container--crew{
+  grid-template-areas:
+    'title'
+    'img'
+    'tabs'
+    'description';
+
+    @include mediaTablet{
+      grid-template-areas:
+      'title'
+      'description'
+      'tabs'
+      'img';
+    }
+
+    @include mediaDesktop{
+      grid-template-areas:
+      '. title img .'
+      '. description img .'
+      '. tabs img .'
+      '. tabs img .';
+
+
+      .left-content{
+        align-self: center;
+      }
+
+      .nav-btns{
+        grid-area: tabs;
+        align-self: center;
+        justify-self: start;
+      }
+
+      .right-content{
+        width: 100%;
+      }
+
+      .page-img{
+        max-width: 90%;
+      }
+
+      .heading--tertiary + p{
+        margin: 0;
+      }
+    }
+
+  .numbered-title{
+    grid-area: title;
+  }
+
+  .left-content{
+    grid-area: description;
+  }
+
+  .right-content{
+    grid-area: img;
+    border-bottom: 1px solid hsl(var(--clr-dark-200));
+  }
+}

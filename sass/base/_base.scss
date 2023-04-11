@@ -1,5 +1,6 @@
 .heading + p {
   max-width: 50ch;
+  margin-inline: auto;
 
   @include mediaTablet {
     max-width: 65ch;

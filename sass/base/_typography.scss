@@ -102,8 +102,10 @@ h1 {
     font-weight: 700;
   }
 
+
   @include mediaTablet{
     --font-size: var(--fs-500);
+    margin-bottom: 1.75rem;
   }
 
   @include mediaDesktop{

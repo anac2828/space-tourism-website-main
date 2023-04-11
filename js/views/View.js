@@ -1,15 +1,19 @@
 export default class View {
-  #btnMobileNav = document.querySelector('.mobile-nav-toggle');
-  #navContainer = document.querySelector('#primary-navigation');
+  #btnMobileNav = document.querySelector(".mobile-nav-toggle");
+  #navContainer = document.querySelector("#primary-navigation");
+  body = document.querySelector("body");
   // Public
-  parentElement = document.querySelector('.main__content');
-  navListPrimary = document.querySelector('.primary-nav');
+  parentElement = document.querySelector(".main__content");
+  navListPrimary = document.querySelector(".primary-nav");
   data;
-  currentTabName = localStorage.getItem('main-nav-tab');
+  currentTabName =
+    localStorage.getItem("main-nav-tab") === null
+      ? "01Home"
+      : localStorage.getItem("main-nav-tab");
   currentTab = this.navListPrimary.querySelector(
     `#${this.currentTabName.slice(2).toLowerCase()}`
   );
-  tabId = localStorage.getItem('current-tab');
+  tabId = localStorage.getItem("current-tab");
 
   constructor() {
     this.#clickedNavHandler();
@@ -17,12 +21,14 @@ export default class View {
   }
 
   #addHandlerMobileNav() {
-    this.#btnMobileNav.addEventListener('click', () => {
-      this.#btnMobileNav.getAttribute('aria-expanded');
+    this.#btnMobileNav.addEventListener("click", () => {
+      this.#btnMobileNav.getAttribute("aria-expanded");
       const isOpen =
-        this.#btnMobileNav.getAttribute('aria-expanded') === 'false' ? 'true' : 'false';
-      this.#btnMobileNav.setAttribute('aria-expanded', isOpen);
-      this.#navContainer.setAttribute('data-visible', isOpen);
+        this.#btnMobileNav.getAttribute("aria-expanded") === "false"
+          ? "true"
+          : "false";
+      this.#btnMobileNav.setAttribute("aria-expanded", isOpen);
+      this.#navContainer.setAttribute("data-visible", isOpen);
     });
   }
 
@@ -39,10 +45,13 @@ export default class View {
         .slice(2)
         .toLocaleLowerCase()}`
     );
+    this.body.classList.add(
+      `bg-img__${this.currentTabName.slice(2).toLocaleLowerCase()}`
+    );
   }
 
   #clickedNavHandler() {
-    this.navListPrimary.addEventListener('click', event => {
+    this.navListPrimary.addEventListener("click", event => {
       if (!this.currentTab) return;
       this.currentTab.setAttribute("aria-selected", "false");
       // to prevent propagation
@@ -55,6 +64,10 @@ export default class View {
         `grid-container--${this.currentTabName
           .slice(2)
           .toLocaleLowerCase()}`
+      );
+
+      this.body.classList.remove(
+        `bg-img__${this.currentTabName.slice(2).toLocaleLowerCase()}`
       );
 
       this.currentTabName = e.textContent.trim();
@@ -76,14 +89,14 @@ export default class View {
   render(data) {
     if (!this.parentElement) return;
     this.data = data;
-    this.parentElement.innerHTML = '';
+    this.parentElement.innerHTML = "";
 
     // if (!this.parentElement) return;
     // markup from the child class
     const markup = this.generateMarkup();
     // insert markup into DOM
 
-    this.parentElement.insertAdjacentHTML('afterbegin', markup);
+    this.parentElement.insertAdjacentHTML("afterbegin", markup);
 
     this.setActiveTab();
     this.setNavTabActive();
