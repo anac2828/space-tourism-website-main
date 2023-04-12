@@ -1,7 +1,10 @@
 import View from './View';
-import launch from '../../assets/technology/image-launch-vehicle-portrait.jpg';
-import space from "../../assets/technology/image-space-capsule-portrait.jpg";
-import spaceport from "../../assets/technology/image-spaceport-portrait.jpg";
+import launch from "../../assets/technology/image-launch-vehicle-landscape.jpg";
+import space from "../../assets/technology/image-space-capsule-landscape.jpg";
+import spaceport from "../../assets/technology/image-spaceport-landscape.jpg";
+import launchPortrait from "../../assets/technology/image-launch-vehicle-portrait.jpg";
+import spacePortrait from "../../assets/technology/image-space-capsule-portrait.jpg";
+import spaceportPortrait from "../../assets/technology/image-spaceport-portrait.jpg";
 
 class Technology extends View {
   #tabId =
@@ -11,37 +14,44 @@ class Technology extends View {
   #techTab = this.navListPrimary.querySelector("#technology");
   #clickedTab;
   #images = { launch, space, spaceport };
+  #imagesPort = {
+    launch: launchPortrait,
+    space: spacePortrait,
+    spaceport: spaceportPortrait,
+  };
 
   generateMarkup() {
     return `
-    <div class="main__left-container">
-        <h1 class="numbered-title" id="main-heading">
-          <span>03</span> Space Launch 101
-        </h1>
-        <div class="main__left-content">
-          <div class="number-indicators nav-btns">
-            <button id="Launch-vehicle" class="btn btn--small" aria-selected="false">1</button>
-            <button id="Spaceport" class="btn btn--small" aria-selected="false">2</button>
-            <button id="Space-capsule" class="btn btn--small" aria-selected="false">3</button>
-          </div>
-          
-          <div>
-            <p class="heading--secondary heading--secondary-subhead">THE TERMINOLOGY…</p>
-            <h2 class="heading heading--tertiary">${
-              this.data.tabContent.name
-            }</h2>
-            <p>${this.data.tabContent.description}</p>
-          </div>
-        </div>
+    <h1 class="numbered-title" id="main-heading">
+      <span>03</span> Space Launch 101
+    </h1>
+    <div class="number-indicators nav-btns">
+      <button id="Launch-vehicle" class="btn btn--small" aria-selected="false">1</button>
+      <button id="Spaceport" class="btn btn--small" aria-selected="false">2</button>
+      <button id="Space-capsule" class="btn btn--small" aria-selected="false">3</button>
     </div>
+    <article class="left-content">
+      <p class="heading--secondary heading--secondary-subhead">THE TERMINOLOGY…</p>
+      <h2 class="heading heading--tertiary">${
+        this.data.tabContent.name
+      }</h2>
+      <p>${this.data.tabContent.description}</p>
+    </article>
 
-    <div class="main__right-content">
-      <img class="page-img" src="${
-        this.#images[
-          this.data.tabContent.name.split(" ")[0].toLowerCase()
-        ]
-      }" alt="" />
-    </div>`;
+    <article class="right-content">
+      <picture>
+        <source srcset="${
+          this.#imagesPort[
+            this.data.tabContent.name.split(" ")[0].toLowerCase()
+          ]
+        }" media="(min-width: 56.25rem)"/>
+        <img class="page-img" src="${
+          this.#images[
+            this.data.tabContent.name.split(" ")[0].toLowerCase()
+          ]
+        }" alt="" />
+      </picture>
+    </article>`;
   }
 
   setActiveTab() {

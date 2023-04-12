@@ -1,11 +1,12 @@
 .grid-container {
+  
   align-self: start;
   display: grid;
   gap: 2rem;
   padding-inline: 2rem;
   text-align: center;
-
   @include mediaDesktop {
+    text-align: left;
     grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
   
     
@@ -26,13 +27,12 @@
    .left-content {
     width: 100%;
 
-    @include mediaDesktop{
-      text-align: left;
-    }
+    // @include mediaDesktop{
+    //   text-align: left;
+    // }
   }
 
   .page-img {
-    display: block;
     max-width: 52%;
     margin-inline: auto;
 

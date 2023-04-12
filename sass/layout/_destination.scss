@@ -15,14 +15,14 @@
     
 
 .description {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   border-top: 1px solid hsl(var(--clr-dark-200));
   margin-top: 3rem;
   padding-top: 3rem;
   gap: 3rem;
 
-  // flex
-  justify-content: center;
-  flex-direction: column;
 
   @include mediaTabletMin {
     flex-direction: row;

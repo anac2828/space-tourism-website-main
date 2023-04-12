@@ -1,0 +1,59 @@
+.grid-container--technology{
+  padding-inline: 0;
+  grid-template-areas: 'title' 'img' 'tabs' 'description';
+  padding-bottom: 3rem;
+  
+  .numbered-title{
+    grid-area: title;
+
+    @include mediaTablet{
+      padding-left: 2rem;
+    }
+  }
+
+  .right-content{
+    grid-area: img;
+  }
+
+  .page-img{
+    max-width: 100%;
+  }
+
+  .left-content{
+    padding-inline: 2rem;
+  }
+
+  .heading--secondary-subhead{
+    margin-bottom: 0.5rem;
+  }
+
+  @include mediaDesktop{
+    grid-template-columns: minmax(2rem, 1fr) min-content repeat(2, minmax(0, 40rem));
+    grid-template-areas: 
+      '. title title .'
+      '. tabs description img'
+    ;
+
+    .nav-btns{
+      grid-area: tabs;
+      flex-direction: column;
+    }
+
+    .left-content{
+      align-self: center;
+      grid-area: description;
+      padding-inline: 0;
+    }
+
+    .heading--tertiary + p{
+        margin: 0;
+    }
+  }
+
+  @include mediaTablet{
+    .page-img{
+      width: 100%;
+      margin-inline: 0;
+    }
+  }
+}

@@ -1,9 +1,14 @@
 .grid-container--crew{
+  padding-bottom: 3rem;
   grid-template-areas:
     'title'
     'img'
     'tabs'
     'description';
+
+    @include mediaTabletMin{
+      padding-bottom: 0;
+    }
 
     @include mediaTablet{
       grid-template-areas:

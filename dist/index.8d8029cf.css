@@ -372,6 +372,22 @@ h1 {
   }
 }
 
+.bg-img__technology {
+  background-image: url("background-technology-mobile.01927e11.jpg");
+}
+
+@media (min-width: 38em) and (max-width: 56.25em) {
+  .bg-img__technology {
+    background-image: linear-gradient(to bottom, hsl(var(--clr-dark) / .2), hsl(var(--clr-dark) / .5)), url("background-technology-tablet.66f36f45.jpg");
+  }
+}
+
+@media (min-width: 56.25em) {
+  .bg-img__technology {
+    background-image: linear-gradient(to bottom, hsl(var(--clr-dark) / .2), hsl(var(--clr-dark) / .5)), url("background-technology-desktop.9a9e4b07.jpg");
+  }
+}
+
 .nav-btns {
   justify-content: center;
   gap: 1rem;
@@ -380,7 +396,7 @@ h1 {
 
 @media (min-width: 56.25em) {
   .nav-btns {
-    gap: 1.5rem;
+    gap: 2rem;
   }
 }
 
@@ -421,20 +437,20 @@ h1 {
   color: hsl(var(--clr-white));
   font-size: var(--fs-300);
   background-color: #0000;
-  padding: 0 1.25rem;
+  padding: 0 1rem;
 }
 
 @media (min-width: 38em) and (max-width: 56.25em) {
   .btn--small {
     font-size: var(--fs-525);
-    padding: 0 1.625rem;
+    padding: 0 1.5rem;
   }
 }
 
 @media (min-width: 56.25em) {
   .btn--small {
     font-size: var(--fs-600);
-    padding: 0 2.25rem;
+    padding: 0 2rem;
   }
 }
 
@@ -647,6 +663,13 @@ h1 {
                        "img"
                        "tabs"
                        "description";
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 38rem) {
+  .grid-container--crew {
+    padding-bottom: 0;
+  }
 }
 
 @media (min-width: 38em) and (max-width: 56.25em) {
@@ -728,6 +751,7 @@ h1 {
   gap: 3rem;
   margin-top: 3rem;
   padding-top: 3rem;
+  display: flex;
 }
 
 @media (min-width: 38rem) {
@@ -756,6 +780,7 @@ h1 {
 
 @media (min-width: 56.25em) {
   .grid-container {
+    text-align: left;
     grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
   }
 
@@ -775,16 +800,9 @@ h1 {
   width: 100%;
 }
 
-@media (min-width: 56.25em) {
-  .grid-container .left-content {
-    text-align: left;
-  }
-}
-
 .grid-container .page-img {
   max-width: 52%;
   margin-inline: auto;
-  display: block;
 }
 
 @media (min-width: 56.25em) {
@@ -843,19 +861,90 @@ h1 {
   }
 }
 
-@media (min-width: 38em) and (max-width: 56.25em) {
+@media (min-width: 38rem) {
   .header-primary {
     padding: 0 0 5rem 2rem;
   }
 }
 
 .grid-container--home {
-  align-self: end;
   gap: 5rem;
+  padding-bottom: max(6rem, 20vh);
 }
 
-.grid-container--home :nth-child(2) {
-  align-self: start;
+@media (min-width: 56.25em) {
+  .grid-container--home {
+    align-self: end;
+  }
+
+  .grid-container--home :nth-child(2) {
+    place-self: end;
+  }
+}
+
+.grid-container--technology {
+  padding-inline: 0;
+  grid-template-areas: "title"
+                       "img"
+                       "tabs"
+                       "description";
+  padding-bottom: 3rem;
+}
+
+.grid-container--technology .numbered-title {
+  grid-area: title;
+}
+
+@media (min-width: 38em) and (max-width: 56.25em) {
+  .grid-container--technology .numbered-title {
+    padding-left: 2rem;
+  }
+}
+
+.grid-container--technology .right-content {
+  grid-area: img;
+}
+
+.grid-container--technology .page-img {
+  max-width: 100%;
+}
+
+.grid-container--technology .left-content {
+  padding-inline: 2rem;
+}
+
+.grid-container--technology .heading--secondary-subhead {
+  margin-bottom: .5rem;
+}
+
+@media (min-width: 56.25em) {
+  .grid-container--technology {
+    grid-template-columns: minmax(2rem, 1fr) min-content repeat(2, minmax(0, 40rem));
+    grid-template-areas: ". title title ."
+                         ". tabs description img";
+  }
+
+  .grid-container--technology .nav-btns {
+    flex-direction: column;
+    grid-area: tabs;
+  }
+
+  .grid-container--technology .left-content {
+    grid-area: description;
+    align-self: center;
+    padding-inline: 0;
+  }
+
+  .grid-container--technology .heading--tertiary + p {
+    margin: 0;
+  }
+}
+
+@media (min-width: 38em) and (max-width: 56.25em) {
+  .grid-container--technology .page-img {
+    width: 100%;
+    margin-inline: 0;
+  }
 }
 
 /*# sourceMappingURL=index.8d8029cf.css.map */
