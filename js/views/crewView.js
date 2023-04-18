@@ -20,12 +20,12 @@ class Crew extends View {
     </h1>
     <article class="left-content">
         
-          <p class="heading heading--quaternary">${
+          <h2 class="heading heading--quaternary">${
             this.data.tabContent.role
-          }</p>
-          <h2 class="heading heading--tertiary">${
-            this.data.tabContent.name
           }</h2>
+          <hp class="heading heading--tertiary">${
+            this.data.tabContent.name
+          }</hp>
           <p>${this.data.tabContent.bio}</p>
     </article>
     <div class="dot-indicators nav-btns">
